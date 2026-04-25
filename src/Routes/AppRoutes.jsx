@@ -1,12 +1,14 @@
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
+import Home from '../Pages/Home';
+import MainLayout from '../Layouts/MainLayout';
 
 function AppRoutes() {
   return (
-    <Router>
-      <Routes>
+    <Routes>
+      <Route element={<MainLayout />}>
         <Route path="/" element={<Home />} />
-      </Routes>
-    </Router>
+      </Route>
+    </Routes>
   );
 }
 
