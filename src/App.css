@@ -1,0 +1,34 @@
+/* App.css */
+@import 'aos/dist/aos.css';
+
+html, body {
+  margin: 0;
+  padding: 0;
+  /* CRITICAL: Prevents horizontal scrollbar caused by AOS animations */
+  overflow-x: hidden; 
+  background-color: #fce4ec;
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+}
+
+/* THE FLIP: Added perspective to the parent for a better 3D effect */
+.flip-container {
+  perspective: 1000px;
+}
+
+[data-aos="page-flip"] {
+  transform: rotateX(-20deg) translateY(100px);
+  opacity: 0;
+  transition-property: transform, opacity;
+}
+
+[data-aos="page-flip"].aos-animate {
+  transform: rotateX(0deg) translateY(0);
+  opacity: 1;
+}
+
+/* Fix for large landmark text cutting off or causing overflow */
+.landmark-text {
+  pointer-events: none;
+  white-space: nowrap;
+}
