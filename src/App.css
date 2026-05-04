@@ -4,26 +4,17 @@
 html, body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Stops the horizontal scrollbar */
+  overflow-x: hidden;
   background-color: #fce4ec;
   font-family: 'Poppins', sans-serif;
   width: 100%;
 }
 
-/* THE FLIP-OUT LOGIC */
-/* This rotates the section away only when you scroll DOWN */
-[data-aos="hero-exit"] {
-  transition-property: transform, opacity;
-  transform-origin: bottom;
-  perspective: 1500px;
+/* Custom intense easing for AOS */
+[data-aos] {
+  transition-timing-function: cubic-bezier(0.25, 1, 0.5, 1) !important;
 }
 
-[data-aos="hero-exit"].aos-animate {
-  transform: rotateX(-90deg);
-  opacity: 0;
-}
-
-/* Ensures the landmark text doesn't create extra width */
 .landmark-text {
   pointer-events: none;
   white-space: nowrap;
