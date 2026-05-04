@@ -4,30 +4,26 @@
 html, body {
   margin: 0;
   padding: 0;
-  /* CRITICAL: Prevents horizontal scrollbar caused by AOS animations */
-  overflow-x: hidden; 
+  overflow-x: hidden; /* Stops the horizontal scrollbar */
   background-color: #fce4ec;
   font-family: 'Poppins', sans-serif;
   width: 100%;
 }
 
-/* THE FLIP: Added perspective to the parent for a better 3D effect */
-.flip-container {
-  perspective: 1000px;
-}
-
-[data-aos="page-flip"] {
-  transform: rotateX(-20deg) translateY(100px);
-  opacity: 0;
+/* THE FLIP-OUT LOGIC */
+/* This rotates the section away only when you scroll DOWN */
+[data-aos="hero-exit"] {
   transition-property: transform, opacity;
+  transform-origin: bottom;
+  perspective: 1500px;
 }
 
-[data-aos="page-flip"].aos-animate {
-  transform: rotateX(0deg) translateY(0);
-  opacity: 1;
+[data-aos="hero-exit"].aos-animate {
+  transform: rotateX(-90deg);
+  opacity: 0;
 }
 
-/* Fix for large landmark text cutting off or causing overflow */
+/* Ensures the landmark text doesn't create extra width */
 .landmark-text {
   pointer-events: none;
   white-space: nowrap;
