@@ -4,39 +4,37 @@ import Marquee from "react-fast-marquee";
 // Defensive check to handle the "got: object" error
 const MarqueeComponent = Marquee.default || Marquee;
 
-function SkillsMarquee() {
-  const skills = [
-    "React.js", 
-    "UI/UX Design", 
-    "Tailwind CSS v4", 
-    "JavaScript", 
-    "Java",
-    "OOP",
-    "IntelliJ IDEA",
-    "Vite"
+function ReverseSkillsMarquee() {
+  const secondarySkills = [
+    "Figma", 
+    "PostgreSQL", 
+    "Spring Boot", 
+    "Git / GitHub", 
+    "Reflection API",
+    "Generics",
+    "VS Code",
+    "Responsive Design"
   ];
 
   return (
-    /* Background changed to a very soft pink tint to stay clean and high-end */
-    <div className="relative w-full bg-[#FFF5F8] py-6 overflow-hidden border-y border-[#D685A9]/20 z-[15]">
+    /* Matches the theme pink background and border */
+    <div className="relative w-full bg-[#FFF5F8] py-6 overflow-hidden border-b border-[#D685A9]/20 z-[15]">
       <MarqueeComponent 
         gradient={false} 
         speed={80} 
         pauseOnHover={false}
         autoFill={true} 
+        direction="right" /* This makes it move towards the right */
       >
-        {skills.map(function(skill, index) {
+        {secondarySkills.map(function(skill, index) {
           return (
             <div key={index} className="flex items-center">
-              {/* 
-                  Text color updated to the intense pink (#D685A9).
-                  Font weight is set to normal per your preference.
-              */}
+              {/* Intense pink text with normal weight for clarity */}
               <span className="text-lg md:text-xl font-normal text-[#D685A9] tracking-[0.4em] uppercase px-16">
                 {skill}
               </span>
               
-              {/* Star separator matching the '✦' style from your interaction box */}
+              {/* Star separator */}
               <span className="text-[#D685A9]/40 text-xl">✦</span>
             </div>
           );
@@ -46,4 +44,4 @@ function SkillsMarquee() {
   );
 }
 
-export default SkillsMarquee;
+export default ReverseSkillsMarquee;
