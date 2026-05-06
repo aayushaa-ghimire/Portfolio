@@ -1,77 +1,3 @@
-// import React from "react";
-// import { motion } from "framer-motion";
-// import "./ExperienceSection.css";
-
-// const experiences = [
-//   { year: "'26", role: "Frontend Lead", company: "Tech Studio", detail: "Architecting premium UI systems with a desktop-first philosophy." },
-//   { year: "'24", role: "UI/UX Designer", company: "Creative Co", detail: "Focusing on clean, architectural layouts and branding." },
-//   { year: "'23", role: "Junior Developer", company: "Web Flow", detail: "Building responsive digital products with raw, simple code." },
-// ];
-
-// export default function ExperienceSection() {
-//   return (
-//     <section className="experience-viewport">
-//       <div className="experience-header">
-//         <span className="eyebrow">Professional Path</span>
-//         <h2 className="section-title">Experience</h2>
-//       </div>
-      
-//       {experiences.map((exp, i) => (
-//         <div className="card-scene" key={i}>
-//           <motion.div
-//             className="folder-container"
-//             initial="initial"
-//             whileInView="animate"
-//             // Adjusted viewport to ensure the "going down" animation triggers visibly
-//             viewport={{ once: false, amount: 0.3, margin: "-10% 0px -10% 0px" }}
-//           >
-//             <div className="folder-shape" />
-            
-//             <motion.div 
-//               className="inner-white-card" 
-//               variants={popUpVariants}
-//             >
-//               <div className="card-inner-content">
-//                 <div className="card-header-group">
-//                   <span className="big-year">{exp.year}</span>
-//                   <div className="aesthetic-dot" />
-//                 </div>
-                
-//                 <div className="card-footer-group">
-//                   <div className="role-meta">
-//                     <h3>{exp.role}</h3>
-//                     <p className="company-tag">{exp.company}</p>
-//                   </div>
-//                   <p className="experience-description">{exp.detail}</p>
-//                 </div>
-//               </div>
-//             </motion.div>
-//           </motion.div>
-//         </div>
-//       ))}
-//     </section>
-//   );
-// }
-
-// const popUpVariants = {
-//   initial: { 
-//     y: "115%", 
-//     opacity: 0, 
-//     scale: 0.95 
-//   },
-//   animate: { 
-//     y: "5%", 
-//     opacity: 1,
-//     scale: 1,
-//     transition: {
-//       type: "spring",
-//       damping: 25,
-//       stiffness: 70,
-//       mass: 1
-//     }
-//   }
-// };
-
 import React from "react";
 import { motion } from "framer-motion";
 import "./ExperienceSection.css";
@@ -84,15 +10,15 @@ const experiences = [
 export default function ExperienceSection() {
   return (
     <section className="experience-viewport">
-      {/* Header updated to match your new "About Me" reference */}
       <div className="experience-header">
-        <div className="header-decor">
-          <div className="sparkle">✦</div>
-          <div className="dot-small" />
-          <div className="dot-smaller" />
+        <div className="header-visuals">
+          <span className="sparkle-icon">✦</span>
+          <div className="accent-dots" />
         </div>
-        <span className="eyebrow-text">Philosophy</span>
-        <h2 className="main-title">About <span className="title-accent">Me</span></h2>
+        <span className="eyebrow">Experience</span>
+        <h2 className="section-title">
+          <span className="text-navy">Recent</span> <span className="text-mauve">Works</span>
+        </h2>
       </div>
       
       {experiences.map((exp, i) => (
@@ -102,27 +28,26 @@ export default function ExperienceSection() {
             initial="initial"
             whileInView="animate"
             exit="initial"
-            // increased amount to 0.6 so the exit happens sooner, making the "going back down" very visible
-            viewport={{ once: false, amount: 0.6 }}
+            viewport={{ once: false, amount: 0.8, margin: "-5% 0px -5% 0px" }}
           >
             <div className="folder-shape" />
             
             <motion.div 
               className="inner-white-card" 
-              variants={cardVariants}
+              variants={popVariants}
             >
               <div className="card-inner-content">
-                <div className="card-header-group">
+                <div className="card-top">
                   <span className="big-year">{exp.year}</span>
-                  <div className="aesthetic-bar" />
+                  <div className="aesthetic-line" />
                 </div>
                 
-                <div className="card-footer-group">
-                  <div className="role-meta">
+                <div className="card-bottom">
+                  <div className="role-group">
                     <h3>{exp.role}</h3>
-                    <p className="company-tag">{exp.company}</p>
+                    <p className="company-label">{exp.company}</p>
                   </div>
-                  <p className="experience-description">{exp.detail}</p>
+                  <p className="description-text">{exp.detail}</p>
                 </div>
               </div>
             </motion.div>
@@ -133,23 +58,21 @@ export default function ExperienceSection() {
   );
 }
 
-const cardVariants = {
+const popVariants = {
   initial: { 
-    y: "110%", 
-    opacity: 0, 
-    rotate: -2,
-    scale: 0.9 
+    y: "100%", 
+    opacity: 0,
+    scale: 0.99
   },
   animate: { 
     y: "8%", 
     opacity: 1,
-    rotate: 0,
     scale: 1,
     transition: {
       type: "spring",
-      damping: 15, // Lower damping = more "pop" and bounce
-      stiffness: 100,
-      mass: 0.8
+      damping: 25,
+      stiffness: 80,
+      mass: 1
     }
   }
 };
