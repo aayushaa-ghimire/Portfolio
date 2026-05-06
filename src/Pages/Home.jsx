@@ -4,6 +4,7 @@ import AboutMe from '../Components/AboutMe';
 import SkillsMarquee from '../Components/SkillsMarquee';
 import SkillsSection from '../Components/SkillsSection';
 import ReverseSkillsMarquee from '../Components/ReverseSkillsMarquee';
+import ExperienceSection from '../Components/ExperienceSection';
 
 function Home() {
   return (
@@ -13,6 +14,7 @@ function Home() {
       <ReverseSkillsMarquee/>
       <AboutMe />
       <SkillsSection/>
+      <ExperienceSection/>
     </main>
   );
 }
