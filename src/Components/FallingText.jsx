@@ -24,7 +24,6 @@ function FallingText() {
     const width = containerRef.current.offsetWidth;
     const height = containerRef.current.offsetHeight;
 
-    // Boundaries
     const floor = Bodies.rectangle(width / 2, height - 10, width, 20, { 
       isStatic: true,
       friction: 0.1 
@@ -48,26 +47,37 @@ function FallingText() {
     });
 
     const runner = Runner.create();
-    Runner.run(runner, engine);
-    World.add(engine.world, [floor, leftWall, rightWall, ...chipBodies]);
-
     let requestID;
-    function syncPhysics() {
-      const updatedItems = chipBodies.map(function(body) {
-        return {
-          name: body.label,
-          x: body.position.x,
-          y: body.position.y,
-          angle: body.angle,
-          id: body.id
-        };
-      });
-      setItems(updatedItems);
-      requestID = requestAnimationFrame(syncPhysics);
+
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        Runner.run(runner, engine);
+        World.add(engine.world, [floor, leftWall, rightWall, ...chipBodies]);
+        
+        function syncPhysics() {
+          const updatedItems = chipBodies.map(function(body) {
+            return {
+              name: body.label,
+              x: body.position.x,
+              y: body.position.y,
+              angle: body.angle,
+              id: body.id
+            };
+          });
+          setItems(updatedItems);
+          requestID = requestAnimationFrame(syncPhysics);
+        }
+        syncPhysics();
+        observer.disconnect(); // Stop observing once started
+      }
+    }, { threshold: 0.1 });
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
     }
-    syncPhysics();
 
     return function() {
+      observer.disconnect();
       cancelAnimationFrame(requestID);
       Runner.stop(runner);
       Engine.clear(engine);
@@ -112,7 +122,6 @@ function FallingText() {
 
   return (
     <div className="flex flex-col items-center w-full min-h-[90vh] py-8 bg-[#FFF5F8]">
-      {/* Reduced Title Size */}
       <div className="text-center mb-8">
         <p className="text-[#D685A9] text-[10px] font-bold tracking-[0.4em] uppercase mb-1">
           Toolkit
@@ -122,7 +131,6 @@ function FallingText() {
         </h2>
       </div>
 
-      {/* Increased Skill Box Size (80vh) and Removed Bottom Chip */}
       <div 
         ref={containerRef} 
         onPointerDown={handlePointerDown}

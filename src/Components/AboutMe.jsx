@@ -8,7 +8,7 @@ function AboutMe() {
     AOS.init({
       duration: 1000,
       easing: 'ease-out',
-      once: false, // Set to false so animations repeat on scroll
+      once: false, // false so animations repeat on scroll
       mirror: true, // Animates elements out while scrolling past them
       offset: 50,
     });
