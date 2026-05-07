@@ -195,24 +195,31 @@
 
 
 import React, { useEffect } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 function HeroSection() {
-  useEffect(function() {
+  useEffect(() => {
     AOS.init({
       duration: 1000,
-      easing: 'ease-out',
-      once: false, // Set to false so it can animate back if you scroll up
-      offset: 50,
+      once: true,
     });
-    AOS.refresh();
   }, []);
+
+  // Hook into the scroll progress of the page
+  const { scrollYProgress } = useScroll();
+
+  // 1. The "Sink" Effect: As you scroll from 0 to 1, the image moves from 0px to 800px down.
+  // 2. The "Fade" Effect: The image fades out slightly as it sinks.
+  const translateY = useTransform(scrollYProgress, [0, 1], ['0px', '800px']);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   const softShadow = { textShadow: '1px 1px 2px rgba(255, 255, 255, 0.3)' };
 
   return (
     <section className="relative w-full h-screen overflow-hidden bg-[#fce4ec] flex items-center justify-center font-['Poppins']">
+      {/* Background Gradient */}
       <div 
         className="absolute inset-0 z-0"
         style={{
@@ -221,84 +228,49 @@ function HeroSection() {
       />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-2 h-full items-center">
-        
         {/* Left Content */}
-        <div className="flex flex-col items-start space-y-6">
-          <p 
-            data-aos="fade-right"
-            data-aos-delay="100"
-            className="text-xs tracking-[0.6em] text-[#b4647d] uppercase font-semibold"
-          >
-            Developer
-          </p>
-          
-          <h1 
-            data-aos="fade-up"
-            data-aos-delay="200"
-            className="text-6xl md:text-8xl font-medium text-[#334155] leading-[0.85] tracking-tighter"
-          >
+        <div className="flex flex-col items-start space-y-6" data-aos="fade-right">
+          <p className="text-xs tracking-[0.6em] text-[#b4647d] uppercase font-semibold">Developer</p>
+          <h1 className="text-6xl md:text-8xl font-medium text-[#334155] leading-[0.85] tracking-tighter">
             Aayusha<br /><span className="text-[#b4647d]" style={softShadow}>Ghimire</span>
           </h1>
-
-          <div 
-            data-aos="fade-up"
-            data-aos-delay="300"
-            className="flex items-center gap-4 pt-2"
-          >
-            <div className="w-12 h-[1px] bg-[#334155]/20"></div>
-            <p className="text-xs text-slate-500 font-medium tracking-widest uppercase">Frontend Architecture</p>
-          </div>
         </div>
 
         {/* Right Content */}
-        <div className="flex flex-col items-end text-right mt-32">
+        <div className="flex flex-col items-end text-right mt-32" data-aos="fade-left">
           <div className="max-w-[340px]">
-            <h2 
-              data-aos="fade-left"
-              data-aos-delay="400"
-              className="text-4xl md:text-5xl font-medium text-[#334155] leading-tight mb-2"
-            >
-              Frontend<br />
-              <span className="text-sm font-semibold text-[#b4647d] tracking-widest uppercase">Developer</span>
+            <h2 className="text-4xl md:text-5xl font-medium text-[#334155] leading-tight mb-2">
+              Frontend<br /><span className="text-sm font-semibold text-[#b4647d] tracking-widest uppercase">Developer</span>
             </h2>
-            
-            <p 
-              data-aos="fade-in"
-              data-aos-delay="500"
-              className="text-sm text-slate-500 font-normal leading-relaxed mb-6"
-            >
-              Building desktop-first digital systems with a focus on clean architecture.
-            </p>
-            
-            <button 
-              data-aos="fade-up"
-              data-aos-delay="600"
-              className="bg-[#334155] text-white px-8 py-2.5 rounded-full text-xs font-semibold tracking-widest uppercase hover:bg-[#D4849E] transition-all active:scale-95"
-            >
+            <button className="bg-[#334155] text-white px-8 py-2.5 rounded-full text-xs font-semibold tracking-widest uppercase hover:bg-[#D4849E] transition-all">
               Work →
             </button>
           </div>
         </div>
       </div>
 
-      {/* THE IMAGE: Replaced Framer Motion with AOS */}
-      <div 
-        className="absolute inset-0 flex justify-center items-end z-[50] pointer-events-none"
-        data-aos="fade-up"      // Initial entrance
-        data-aos-anchor-placement="top-top" // Triggers based on the section scroll
+      {/* THE IMAGE: Pop up at start, sink on scroll */}
+      <motion.div 
+        style={{ 
+          y: translateY, // Hooks the movement to the scrollbar
+          opacity: opacity // Fades as it goes down
+        }} 
+        className="absolute inset-0 flex justify-center items-end z-[99] pointer-events-none"
       >
-        <img
+        <motion.img
+          // THE POP UP EFFECT
+          initial={{ opacity: 0, y: 100, scale: 0.8 }} 
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ 
+            duration: 1.2, 
+            ease: [0.16, 1, 0.3, 1], // Custom "expo" ease for a premium feel
+            delay: 0.2 
+          }}
           src="/img4-nobg.png"
           alt="Aayusha"
-          className="h-[45vh] md:h-[85vh] w-auto object-contain transition-transform duration-1000"
-          /* 
-             Adding a custom data-aos for the downward "exit" effect 
-             when the user scrolls down 
-          */
-          data-aos="zoom-out-down" 
-          data-aos-delay="200"
+          className="h-[50vh] md:h-[85vh] w-auto object-contain"
         />
-      </div>
+      </motion.div>
     </section>
   );
 }
