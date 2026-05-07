@@ -320,26 +320,24 @@ function HeroSection() {
 
   useEffect(() => {
     AOS.init({
-      duration: 1200,
+      duration: 1000,
       easing: 'ease-out-quint',
       once: true,
     });
   }, []);
 
-  // Track scroll progress specifically for this section
+  // Track scroll only within this specific section
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"]
   });
 
-  // AGGRESSIVE EXIT:
-  // x: Moves from center to -100% left
-  // y: Sinks down 50%
-  // opacity: Completely disappears (0) very early at 0.4 progress
-  const x = useTransform(scrollYProgress, [0, 1], ['0%', '-100%']);
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
-  const opacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.4], [1, 0.8]);
+  // SPEED & DIRECTION: Back to the original vertical sinking
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.7]);
+  
+  // FAST FADE: [0, 0.3] ensures it vanishes almost immediately as you scroll
+  const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
 
   const softShadow = { textShadow: '1px 1px 2px rgba(255, 255, 255, 0.3)' };
 
@@ -410,9 +408,9 @@ function HeroSection() {
         </div>
       </div>
 
-      {/* THE IMAGE */}
+      {/* THE IMAGE: Original direction + Extra fast fade */}
       <motion.div 
-        style={{ x, y, scale, opacity }} 
+        style={{ y, scale, opacity }} 
         className="fixed inset-0 flex justify-center items-end z-[99] pointer-events-none"
       >
         <motion.img
