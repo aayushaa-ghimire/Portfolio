@@ -1,5 +1,4 @@
-/* App.css */
-@import 'aos/dist/aos.css';
+/* @import 'aos/dist/aos.css';
 
 html, body {
   margin: 0;
@@ -10,7 +9,6 @@ html, body {
   width: 100%;
 }
 
-/* Custom intense easing for AOS */
 [data-aos] {
   transition-timing-function: cubic-bezier(0.25, 1, 0.5, 1) !important;
 }
@@ -18,4 +16,252 @@ html, body {
 .landmark-text {
   pointer-events: none;
   white-space: nowrap;
+} */
+
+/* App.css */
+
+
+/* @import 'aos/dist/aos.css';
+
+:root {
+  --bg-pink: #fce4ec;
+  --navy: #334155;
+  --mauve: #b4647d;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: var(--bg-pink);
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  scrollbar-gutter: stable; 
+}
+
+[data-aos] {
+  transition-timing-function: cubic-bezier(0.25, 1, 0.5, 1) !important;
+  will-change: transform, opacity;
+}
+
+.landmark-text {
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+
+
+@keyframes hero-image-exit {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(70vh) translateX(-80%) scale(0.7);
+    opacity: 0;
+  }
+}
+
+.scroll-smooth-img {
+  animation: hero-image-exit linear both;
+  animation-timeline: scroll(root);
+  animation-range: 0vh 100vh;
+  
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+
+.hero-viewport {
+  position: relative;
+  z-index: 1;
+  height: 100vh;
+  width: 100%;
+}
+
+
+.fixed-image-wrapper {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 5; 
+  pointer-events: none;
+}
+
+
+.experience-viewport, 
+section:not(.hero-viewport) {
+  position: relative;
+  z-index: 10;
+  background-color: var(--bg-pink);
+  width: 100%;
+}
+
+.text-navy { color: var(--navy); }
+.text-mauve { color: var(--mauve); }
+
+.rounded-high-end {
+  border-radius: 40px; 
+} */
+
+
+
+
+/* @import 'aos/dist/aos.css';
+
+:root {
+  --bg-pink: #fce4ec;
+  --navy: #334155;
+  --mauve: #b4647d;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: var(--bg-pink);
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+}
+
+[data-aos] {
+  transition-timing-function: cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+.hero-viewport {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+}
+
+.text-layer {
+  position: relative;
+  z-index: 20; 
+  height: 100vh;
+  width: 100%;
+}
+
+.image-layer {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 10;
+  pointer-events: none;
+}
+
+@keyframes hero-image-exit {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  30% {
+    opacity: 0.7;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-45%, 70vh) scale(0.6);
+    opacity: 0;
+  }
+}
+
+.scroll-smooth-img {
+  animation: hero-image-exit linear both; 
+  animation-timeline: scroll(root);
+  animation-range: 0vh 100vh;
+  
+  will-change: transform, opacity;
+  transform: translateZ(0); 
+}
+
+section:not(.hero-viewport) {
+  position: relative;
+  z-index: 30;
+  background-color: var(--bg-pink);
+} */
+
+
+/* App.css */
+@import 'aos/dist/aos.css';
+
+:root {
+  --bg-pink: #fce4ec;
+  --navy: #334155;
+  --mauve: #b4647d;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: var(--bg-pink);
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+}
+
+/* Layering Strategy */
+.hero-viewport {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+}
+
+.text-layer {
+  position: relative;
+  z-index: 20; 
+  height: 100vh;
+  width: 100%;
+}
+
+.image-layer {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* THE ULTIMATE ANIMATION: Mirrors your [0, 0.5, 1] logic */
+@keyframes ultimate-exit {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  /* At 50% scroll, image has moved to bottom-left and shrunk */
+  50% {
+    transform: translate(-42%, 20vh) scale(0.65);
+    opacity: 0.8;
+  }
+  /* Final fade out as it sinks further */
+  100% {
+    transform: translate(-42%, 80vh) scale(0.6);
+    opacity: 0;
+  }
+}
+
+.scroll-smooth-img {
+  animation: ultimate-exit linear both;
+  animation-timeline: scroll(root);
+  /* Range matches your motion preference for a natural feel */
+  animation-range: 0vh 120vh;
+  will-change: transform, opacity;
+}
+
+section:not(.hero-viewport) {
+  position: relative;
+  z-index: 30;
+  background-color: var(--bg-pink);
 }
