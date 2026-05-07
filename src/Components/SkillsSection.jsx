@@ -3,7 +3,7 @@ import FallingText from './FallingText';
 
 function SkillsSection() {
   return (
-    <section className="relative w-full h-screen bg-[#334155] overflow-hidden cursor-crosshair">
+    <section className="relative w-full h-screen bg-[#334155] overflow-hidden">
       
       <div className="absolute top-10 left-10 pointer-events-none">
         <span className="text-[#b4647d] text-[10px] tracking-[0.8em] uppercase opacity-30">

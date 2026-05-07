@@ -3,18 +3,53 @@ import { motion } from "framer-motion";
 import "./ExperienceSection.css";
 
 const experiences = [
-  { year: "'26", role: "Frontend Lead", company: "Tech Studio", detail: "Architecting premium UI systems with a desktop-first philosophy." },
-  { year: "'24", role: "UI/UX Designer", company: "Creative Co", detail: "Focusing on clean, architectural layouts and branding." }
+  { 
+    year: "'2026", 
+    role: "Frontend Developer", 
+    company: "Vividify Solutions", 
+    detail: " Architecting premium UI systems with a desktop-first philosophy. Focused on high-end agency aesthetics and modular component architecture.",
+    category: "Web-development"
+  },
+  { 
+    year: "'2025", 
+    role: "Virtual Assistant", 
+    company: "Maven solutions", 
+    detail: "Crafting architectural layouts with refined typography and glassmorphism. Specializing in brand identity and user-centric digital experiences.",
+    category: "Communication"
+  }
 ];
 
 export default function ExperienceSection() {
+  const popVariants = {
+    initial: { 
+      y: "100%", 
+      opacity: 0 
+    },
+    animate: { 
+      y: "12%", 
+      opacity: 1,
+      transition: {
+        type: "spring",
+        damping: 22,
+        stiffness: 70
+      }
+    },
+    // SLOW EXIT LOGIC
+    exit: { 
+      y: "100%", 
+      opacity: 0,
+      transition: {
+        type: "spring",
+        damping: 45,   // Higher damping = less bounce, more control
+        stiffness: 25,  // Lower stiffness = much slower movement
+        mass: 1.2
+      }
+    }
+  };
+
   return (
     <section className="experience-viewport">
       <div className="experience-header">
-        <div className="header-visuals">
-          <span className="sparkle-icon">✦</span>
-          <div className="accent-dots" />
-        </div>
         <span className="eyebrow">Experience</span>
         <h2 className="section-title">
           <span className="text-navy">Recent</span> <span className="text-mauve">Works</span>
@@ -27,8 +62,8 @@ export default function ExperienceSection() {
             className="folder-container"
             initial="initial"
             whileInView="animate"
-            exit="initial"
-            viewport={{ once: false, amount: 0.8, margin: "-5% 0px -5% 0px" }}
+            exit="exit"
+            viewport={{ once: false, amount: 0.7 }}
           >
             <div className="folder-shape" />
             
@@ -36,19 +71,16 @@ export default function ExperienceSection() {
               className="inner-white-card" 
               variants={popVariants}
             >
-              <div className="card-inner-content">
-                <div className="card-top">
-                  <span className="big-year">{exp.year}</span>
-                  <div className="aesthetic-line" />
-                </div>
-                
-                <div className="card-bottom">
-                  <div className="role-group">
-                    <h3>{exp.role}</h3>
-                    <p className="company-label">{exp.company}</p>
-                  </div>
-                  <p className="description-text">{exp.detail}</p>
-                </div>
+              <div className="card-top">
+                <span className="category-tag">{exp.category}</span>
+                <span className="big-year">{exp.year}</span>
+              </div>
+              
+              <div className="card-content-area">
+                <div className="aesthetic-line" />
+                <h3>{exp.role}</h3>
+                <p className="company-label">{exp.company}</p>
+                <p className="description-text">{exp.detail}</p>
               </div>
             </motion.div>
           </motion.div>
@@ -57,22 +89,3 @@ export default function ExperienceSection() {
     </section>
   );
 }
-
-const popVariants = {
-  initial: { 
-    y: "100%", 
-    opacity: 0,
-    scale: 0.99
-  },
-  animate: { 
-    y: "8%", 
-    opacity: 1,
-    scale: 1,
-    transition: {
-      type: "spring",
-      damping: 25,
-      stiffness: 80,
-      mass: 1
-    }
-  }
-};
