@@ -5,6 +5,7 @@ import SkillsMarquee from '../Components/SkillsMarquee';
 import SkillsSection from '../Components/SkillsSection';
 import ReverseSkillsMarquee from '../Components/ReverseSkillsMarquee';
 import ExperienceSection from '../Components/ExperienceSection';
+import InfiniteMarquee from '../Components/InfiniteMarquee';
 
 function Home() {
   return (
@@ -15,6 +16,7 @@ function Home() {
       <AboutMe />
       <SkillsSection/>
       <ExperienceSection/>
+      <InfiniteMarquee/>
     </main>
   );
 }
