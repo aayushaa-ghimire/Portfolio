@@ -1,7 +1,6 @@
 import React from 'react';
 import Marquee from "react-fast-marquee";
 
-// Defensive check to handle the "got: object" error
 const MarqueeComponent = Marquee.default || Marquee;
 
 function SkillsMarquee() {
@@ -17,27 +16,25 @@ function SkillsMarquee() {
   ];
 
   return (
-    /* Background changed to a very soft pink tint to stay clean and high-end */
-    <div className="relative w-full bg-[#FFF5F8] py-6 overflow-hidden border-y border-[#D685A9]/20 z-[15]">
+    <div className="relative w-full bg-[#FFF5F8] py-8 overflow-hidden border-y border-[#D685A9]/10 z-[15]">
       <MarqueeComponent 
         gradient={false} 
-        speed={80} 
+        speed={60} 
         pauseOnHover={false}
         autoFill={true} 
       >
         {skills.map(function(skill, index) {
           return (
             <div key={index} className="flex items-center">
-              {/* 
-                  Text color updated to the intense pink (#D685A9).
-                  Font weight is set to normal per your preference.
-              */}
-              <span className="text-lg md:text-xl font-normal text-[#D685A9] tracking-[0.4em] uppercase px-16">
+             
+              <span 
+                className="text-xl md:text-2xl font-medium text-[#D685A9] tracking-[0.3em] uppercase px-12 italic"
+                style={{ fontFamily: "'Playfair Display', serif" }}
+              >
                 {skill}
               </span>
               
-              {/* Star separator matching the '✦' style from your interaction box */}
-              <span className="text-[#D685A9]/40 text-xl">✦</span>
+              <span className="text-[#D685A9]/30 text-2xl">✦</span>
             </div>
           );
         })}
