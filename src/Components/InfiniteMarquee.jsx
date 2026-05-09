@@ -210,7 +210,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 
-import './ExperienceSection.css';
+import './InfiniteMarquee.css';
 
 import { Autoplay, FreeMode } from 'swiper/modules';
 
