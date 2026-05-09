@@ -225,7 +225,7 @@ function HeroSection() {
                 Developer
               </p>
               {/* THE NAME: Modern Serif Polish */}
-              <h1 data-aos="fade-right" data-aos-delay="400" className="font-['Playfair_Display'] italic text-6xl md:text-8xl font-medium text-[#334155] leading-[0.85] tracking-tight">
+              <h1 data-aos="fade-right" data-aos-delay="400" className="font-['Playfair_Display']  text-6xl md:text-8xl font-medium text-[#334155] leading-[0.85] tracking-tight">
                 Aayusha<br />
                 <span className="text-[#b4647d]" style={softShadow}>Ghimire</span>
               </h1>
@@ -242,7 +242,7 @@ function HeroSection() {
             <div className="flex flex-col items-end text-right mt-32">
               <div className="max-w-[340px]">
                 {/* SUB-HEADING: Balanced Italics */}
-                <h2 data-aos="fade-left" data-aos-delay="400" className="font-['Playfair_Display'] italic text-4xl md:text-5xl font-medium text-[#334155] leading-tight mb-2">
+                <h2 data-aos="fade-left" data-aos-delay="400" className="font-['Playfair_Display']  text-4xl md:text-5xl font-medium text-[#334155] leading-tight mb-2">
                   Frontend<br />
                   <span className="font-['Poppins'] not-italic text-[10px] font-semibold text-[#b4647d] tracking-[0.4em] uppercase">Developer</span>
                 </h2>

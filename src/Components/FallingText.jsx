@@ -126,7 +126,7 @@ function FallingText() {
         <p className="text-[#D685A9] text-[10px] font-bold tracking-[0.4em] uppercase mb-1">
           Toolkit
         </p>
-        <h2 className="text-[#D685A9] text-3xl md:text-4xl font-black tracking-tighter uppercase italic">
+        <h2 className="text-[#D685A9] text-3xl md:text-4xl font-medium tracking-tighter uppercase ">
           My Skills
         </h2>
       </div>

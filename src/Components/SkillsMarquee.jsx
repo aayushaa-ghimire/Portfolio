@@ -16,25 +16,33 @@ function SkillsMarquee() {
   ];
 
   return (
-    <div className="relative w-full bg-[#FFF5F8] py-8 overflow-hidden border-y border-[#D685A9]/10 z-[15]">
+    <div className="relative w-full bg-[#FFF5F8] py-10 overflow-hidden border-y border-[#b4647d]/10 z-[15]">
       <MarqueeComponent 
         gradient={false} 
-        speed={60} 
+        speed={50} 
         pauseOnHover={false}
         autoFill={true} 
       >
         {skills.map(function(skill, index) {
           return (
             <div key={index} className="flex items-center">
-             
+              {/* 
+                  Typography matched to Project Section:
+                  - Color: #b4647d (Pink heavy)
+                  - Weight: Normal (Requested for clarity)
+                  - Spacing: 0.4em tracking for a premium feel
+              */}
               <span 
-                className="text-xl md:text-2xl  text-[#D685A9] tracking-[0.3em] uppercase px-12 "
-                style={{ fontFamily: "'Playfair Display', serif" }}
+                className="text-lg md:text-xl text-[#b4647d] tracking-[0.4em] uppercase px-16"
+                style={{ 
+                  fontFamily: "'Playfair Display', serif",
+                  fontWeight: 400 
+                }}
               >
                 {skill}
               </span>
               
-              <span className="text-[#D685A9]/30 text-xl">✦</span>
+              <span className="text-[#b4647d]/40 text-lg">✦</span>
             </div>
           );
         })}
