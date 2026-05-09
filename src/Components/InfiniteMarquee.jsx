@@ -282,11 +282,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 
-import './ExperienceSection.css';
+import './InfiniteMarquee.css';
 
 import { Autoplay, FreeMode } from 'swiper/modules';
 
-// Placeholder array for your future projects
 const projects = [
   { id: "1", title: "Project One", link: "View Project" },
   { id: "2", title: "Project Two", link: "View Project" },
@@ -308,15 +307,14 @@ export default function ExperienceSection() {
         slidesPerView={1.5}
         spaceBetween={30}
         loop={true}
-        speed={10000} // Constant cinematic pace
+        speed={10000} 
         freeMode={{
           enabled: true,
           momentum: false,
         }}
         autoplay={{
           delay: 0,
-          disableOnInteraction: false, // Keeps moving after drag
-          pauseOnMouseEnter: false,
+          disableOnInteraction: false,
         }}
         breakpoints={{
           640: { slidesPerView: 2.5, spaceBetween: 40 },
