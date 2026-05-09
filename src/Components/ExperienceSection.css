@@ -1,34 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Poppins:wght@300;400;500;600&display=swap');
 
 .experience-viewport {
   width: 100%;
   padding: 100px 0;
-  background-color: #fce4ec;
+  /* Updated to match your new clean theme background */
+  background-color: #FFF5F8; 
   font-family: 'Poppins', sans-serif;
 }
 
 .experience-header {
   text-align: center;
-  margin-bottom: 20px; /* Reduced space between header and first file */
+  margin-bottom: 20px;
 }
 
+/* Updated Section Title with Playfair Display Italic */
 .section-title {
-  font-size: 4.5rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 5rem;
   font-weight: 600;
-  letter-spacing: -0.04em;
-  line-height: 1;
+  font-style: italic; /* Essential for that modern agency look */
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
 .text-navy { color: #334155; } 
-.text-mauve { color: #b4647d; font-weight: 400; }
-.eyebrow { color: #b4647d; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5em; }
+.text-mauve { color: #b4647d; font-weight: 500; }
+
+.eyebrow { 
+  color: #b4647d; 
+  font-size: 11px; 
+  font-weight: 600; 
+  text-transform: uppercase; 
+  letter-spacing: 0.6em; /* Increased tracking for elegance */
+  margin-bottom: 10px;
+  display: block;
+}
 
 .card-scene {
-  height: 520px; /* Tightened height */
+  height: 520px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px; /* Reduced space between the folders */
+  margin-bottom: 20px;
   position: relative;
 }
 
@@ -47,11 +60,12 @@
   bottom: 0;
   width: 100%;
   height: 75%;
-  background: #d196a8;
+  /* Slightly softened the folder color to match the girly palette better */
+  background: #d6a1b0;
   z-index: 1;
   clip-path: path("M 0 50 C 0 25, 35 12, 70 12 L 300 0 L 610 35 C 645 40, 680 60, 680 85 L 680 440 L 0 440 Z");
   border-radius: 45px;
-  box-shadow: inset 0 10px 20px rgba(0,0,0,0.05);
+  box-shadow: inset 0 10px 20px rgba(0,0,0,0.03);
 }
 
 .inner-white-card {
@@ -64,14 +78,15 @@
   padding: 45px 50px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
-  border-top: 1px solid rgba(0,0,0,0.03); /* Better top definition */
+  box-shadow: 0 20px 50px rgba(180, 100, 125, 0.08); /* Pinkish shadow for cohesiveness */
+  border-top: 1px solid rgba(0,0,0,0.02);
 }
 
 .card-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .category-tag {
@@ -79,48 +94,58 @@
   font-weight: 600;
   color: #b4647d;
   background: #fff5f8;
-  padding: 5px 14px;
+  padding: 6px 16px;
   border-radius: 50px;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
 }
 
+/* Updated Year to Playfair Italic */
 .big-year {
-  font-size: 4.5rem;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 4.8rem;
   font-weight: 500;
   color: #334155;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.04em;
   line-height: 1;
 }
 
 .aesthetic-line {
-  width: 35px;
-  height: 3px;
+  width: 40px;
+  height: 2px;
   background: #b4647d;
-  margin: 15px 0;
+  margin: 20px 0;
   border-radius: 10px;
-  opacity: 0.8;
+  opacity: 0.5;
 }
 
+/* Role Title updated to Playfair */
 .card-content-area h3 {
-  font-size: 2rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
   color: #334155;
   font-weight: 600;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  font-style: italic;
 }
 
 .company-label {
   color: #b4647d;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.25em;
-  font-size: 0.75rem;
-  margin-bottom: 20px;
+  letter-spacing: 0.3em;
+  font-size: 0.7rem;
+  margin-bottom: 25px;
 }
 
+/* Modernized Description text */
 .description-text {
-  color: #64748b;
-  font-size: 1rem;
-  line-height: 1.7;
+  color: #334155; /* Changed from slate to match your main text color */
+  opacity: 0.8;
+  font-size: 1.05rem;
+  font-weight: 300; /* Lighter weight for modern feel */
+  line-height: 1.8;
   max-width: 95%;
+  letter-spacing: 0.01em;
 }
