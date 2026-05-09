@@ -1,48 +1,48 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:wght@300;400;500;600&display=swap');
 
 .experience-viewport {
   width: 100%;
-  padding: 100px 0;
-  /* Updated to match your new clean theme background */
-  background-color: #FFF5F8; 
+  padding: 80px 0;
+  background-color: #FFF5F8;
   font-family: 'Poppins', sans-serif;
 }
 
+/* BALANCED SPACING: Pulling the folder closer but not touching the title */
 .experience-header {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 50px; 
+  position: relative;
+  z-index: 10;
 }
 
-/* Updated Section Title with Playfair Display Italic */
+.eyebrow {
+  color: #b4647d;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6em; /* Increased for a premium feel */
+  display: block;
+  margin-bottom: 8px;
+}
+
 .section-title {
   font-family: 'Playfair Display', serif;
-  font-size: 5rem;
+  font-size: 4.5rem;
   font-weight: 600;
-  font-style: italic; /* Essential for that modern agency look */
-  letter-spacing: -0.02em;
+  font-style: italic;
+  letter-spacing: -0.01em; /* Reduced negative tracking to de-clutter */
   line-height: 1.1;
 }
 
 .text-navy { color: #334155; } 
-.text-mauve { color: #b4647d; font-weight: 500; }
-
-.eyebrow { 
-  color: #b4647d; 
-  font-size: 11px; 
-  font-weight: 600; 
-  text-transform: uppercase; 
-  letter-spacing: 0.6em; /* Increased tracking for elegance */
-  margin-bottom: 10px;
-  display: block;
-}
+.text-mauve { color: #b4647d; }
 
 .card-scene {
-  height: 520px;
+  height: 480px; 
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
-  position: relative;
+  margin-bottom: 30px;
 }
 
 .folder-container {
@@ -60,14 +60,13 @@
   bottom: 0;
   width: 100%;
   height: 75%;
-  /* Slightly softened the folder color to match the girly palette better */
   background: #d6a1b0;
   z-index: 1;
   clip-path: path("M 0 50 C 0 25, 35 12, 70 12 L 300 0 L 610 35 C 645 40, 680 60, 680 85 L 680 440 L 0 440 Z");
   border-radius: 45px;
-  box-shadow: inset 0 10px 20px rgba(0,0,0,0.03);
 }
 
+/* UNCLUTTERED WHITE CARD (Matching image_748a21.png proportions) */
 .inner-white-card {
   position: relative;
   z-index: 2;
@@ -75,77 +74,89 @@
   height: 420px;
   background: #ffffff;
   border-radius: 35px 35px 15px 15px; 
-  padding: 45px 50px;
+  padding: 60px 65px; /* Extra padding to prevent text from hitting edges */
   display: flex;
   flex-direction: column;
-  box-shadow: 0 20px 50px rgba(180, 100, 125, 0.08); /* Pinkish shadow for cohesiveness */
-  border-top: 1px solid rgba(0,0,0,0.02);
+  box-shadow: 0 20px 50px rgba(180, 100, 125, 0.05);
 }
 
 .card-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 15px; /* Space between year line and role */
 }
 
 .category-tag {
-  font-size: 9px;
-  font-weight: 600;
-  color: #b4647d;
-  background: #fff5f8;
-  padding: 6px 16px;
-  border-radius: 50px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
+  font-size: 1.1rem;
+  color: #334155;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  opacity: 0.9;
 }
 
-/* Updated Year to Playfair Italic */
 .big-year {
   font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 4.8rem;
-  font-weight: 500;
+  /* font-style: italic; */
+  font-size: 1.2rem;
   color: #334155;
-  letter-spacing: -0.04em;
   line-height: 1;
+  letter-spacing: -0.02em;
 }
 
-.aesthetic-line {
-  width: 40px;
-  height: 2px;
-  background: #b4647d;
-  margin: 20px 0;
-  border-radius: 10px;
-  opacity: 0.5;
-}
-
-/* Role Title updated to Playfair */
 .card-content-area h3 {
   font-family: 'Playfair Display', serif;
-  font-size: 2.2rem;
+  font-size: 2.8rem; 
+  font-style:italic;
   color: #334155;
-  font-weight: 600;
-  margin-bottom: 6px;
-  font-style: italic;
+  margin-bottom: 8px;
+  letter-spacing: 0.01em; 
 }
 
 .company-label {
   color: #b4647d;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.3em;
-  font-size: 0.7rem;
+  letter-spacing: 0.3em; 
+  font-size: 0.75rem;
   margin-bottom: 25px;
 }
 
-/* Modernized Description text */
 .description-text {
-  color: #334155; /* Changed from slate to match your main text color */
-  opacity: 0.8;
+  color: #64748b;
   font-size: 1.05rem;
-  font-weight: 300; /* Lighter weight for modern feel */
-  line-height: 1.8;
-  max-width: 95%;
+  font-weight: 300;
+  line-height: 1.8; 
+  max-width: 90%;
   letter-spacing: 0.01em;
+}
+
+.resume-footer {
+  display: flex;
+  justify-content: center;
+  padding: 60px 0 100px;
+}
+
+.resume-btn {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #334155;
+  text-decoration: none;
+  padding: 14px 45px;
+  border: 1px solid #b4647d25;
+  border-radius: 100px;
+  background: white;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: all 0.4s ease;
+  box-shadow: 0 10px 30px rgba(180, 100, 125, 0.05);
+}
+
+.resume-btn:hover {
+  background: #b4647d;
+  color: white;
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(180, 100, 125, 0.15);
 }

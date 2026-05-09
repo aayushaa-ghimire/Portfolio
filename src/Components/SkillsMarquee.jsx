@@ -28,13 +28,13 @@ function SkillsMarquee() {
             <div key={index} className="flex items-center">
              
               <span 
-                className="text-xl md:text-2xl font-medium text-[#D685A9] tracking-[0.3em] uppercase px-12 italic"
+                className="text-xl md:text-2xl  text-[#D685A9] tracking-[0.3em] uppercase px-12 "
                 style={{ fontFamily: "'Playfair Display', serif" }}
               >
                 {skill}
               </span>
               
-              <span className="text-[#D685A9]/30 text-2xl">✦</span>
+              <span className="text-[#D685A9]/30 text-xl">✦</span>
             </div>
           );
         })}

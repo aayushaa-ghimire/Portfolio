@@ -88,6 +88,100 @@
 
 
 
+// import React, { useEffect, useState } from 'react';
+// import AOS from 'aos';
+// import 'aos/dist/aos.css';
+
+// function HeroSection() {
+//   const [scrollY, setScrollY] = useState(0);
+
+//   useEffect(() => {
+//     AOS.init({
+//       duration: 1200,
+//       once: false,
+//       easing: 'cubic-bezier(0.19, 1, 0.22, 1)',
+//     });
+
+//     const handleScroll = () => setScrollY(window.scrollY);
+//     window.addEventListener('scroll', handleScroll);
+//     return () => window.removeEventListener('scroll', handleScroll);
+//   }, []);
+
+  
+//   const leftMove = { transform: `translateX(-${scrollY * 0.8}px)`, opacity: 1 - scrollY / 600 };
+//   const rightMove = { transform: `translateX(${scrollY * 0.8}px)`, opacity: 1 - scrollY / 600 };
+//   const imgMove = { transform: `translateY(${scrollY * 0.4}px)`, opacity: 1 - scrollY / 800 };
+
+//   const softShadow = { textShadow: '1px 1px 2px rgba(255, 255, 255, 0.3)' };
+
+//   return (
+//     <section className="hero-viewport relative overflow-hidden bg-white">
+//       <div 
+//         className="absolute inset-0 z-0"
+//         style={{
+//           background: 'radial-gradient(circle at 50% 50%, #ffffff 0%, #fce4ec 35%, #f8bbd0 70%, #D4849E 100%)'
+//         }}
+//       />
+
+//       <div className="relative z-10 flex items-center justify-center h-full">
+//         <div className="w-full max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-2 items-center">
+          
+//           <div style={leftMove} className="transition-transform duration-75 ease-out">
+//             <div className="flex flex-col items-start space-y-6">
+//               <p data-aos="fade-right" data-aos-delay="400" className="text-xs tracking-[0.6em] text-[#b4647d] uppercase font-semibold">
+//                 Developer
+//               </p>
+//               <h1 data-aos="fade-right" data-aos-delay="400" className="text-6xl md:text-8xl font-medium text-[#334155] leading-[0.85] tracking-tighter">
+//                 Aayusha<br />
+//                 <span className="text-[#b4647d]" style={softShadow}>Ghimire</span>
+//               </h1>
+//               <div data-aos="fade-right" data-aos-delay="400" className="flex items-center gap-4 pt-2">
+//                 <div className="w-12 h-[1px] bg-[#334155]/20"></div>
+//                 <p className="text-xs text-slate-500 font-medium tracking-widest uppercase">
+//                   Frontend Architecture
+//                 </p>
+//               </div>
+//             </div>
+//           </div>
+
+//           <div style={rightMove} className="transition-transform duration-75 ease-out">
+//             <div className="flex flex-col items-end text-right mt-32">
+//               <div className="max-w-[340px]">
+//                 <h2 data-aos="fade-left" data-aos-delay="400" className="text-4xl md:text-5xl font-medium text-[#334155] leading-tight mb-2">
+//                   Frontend<br />
+//                   <span className="text-sm font-semibold text-[#b4647d] tracking-widest uppercase">Developer</span>
+//                 </h2>
+//                 <p data-aos="fade-left" data-aos-delay="400" className="text-sm text-slate-500 font-normal leading-relaxed mb-6">
+//                   Building desktop-first digital systems with a focus on clean architecture and premium aesthetics.
+//                 </p>
+//                 <div data-aos="fade-left" data-aos-delay="400">
+//                   <button className="bg-[#334155] text-white px-8 py-2.5 rounded-full text-xs font-semibold tracking-widest uppercase hover:bg-[#b4647d] transition-all active:scale-95 shadow-md">
+//                     Work →
+//                   </button>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+
+//       <div style={imgMove} className="absolute inset-0 flex items-center justify-center pointer-events-none transition-transform duration-75 ease-out">
+//         <img
+//           src="/img4-nobg.png"
+//           alt="Aayusha"
+//           className="h-[45vh] md:h-[85vh] w-auto object-contain mt-auto"
+//           data-aos="fade-up" 
+//           data-aos-duration="1200" 
+//           data-aos-delay="400" 
+//         />
+//       </div>
+//     </section>
+//   );
+// }
+
+// export default HeroSection;
+
+
 import React, { useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -107,7 +201,6 @@ function HeroSection() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  
   const leftMove = { transform: `translateX(-${scrollY * 0.8}px)`, opacity: 1 - scrollY / 600 };
   const rightMove = { transform: `translateX(${scrollY * 0.8}px)`, opacity: 1 - scrollY / 600 };
   const imgMove = { transform: `translateY(${scrollY * 0.4}px)`, opacity: 1 - scrollY / 800 };
@@ -115,7 +208,7 @@ function HeroSection() {
   const softShadow = { textShadow: '1px 1px 2px rgba(255, 255, 255, 0.3)' };
 
   return (
-    <section className="hero-viewport relative overflow-hidden bg-white">
+    <section className="hero-viewport relative overflow-hidden bg-white h-screen font-['Poppins']">
       <div 
         className="absolute inset-0 z-0"
         style={{
@@ -128,16 +221,17 @@ function HeroSection() {
           
           <div style={leftMove} className="transition-transform duration-75 ease-out">
             <div className="flex flex-col items-start space-y-6">
-              <p data-aos="fade-right" data-aos-delay="400" className="text-xs tracking-[0.6em] text-[#b4647d] uppercase font-semibold">
+              <p data-aos="fade-right" data-aos-delay="400" className="text-[10px] tracking-[0.6em] text-[#b4647d] uppercase font-semibold">
                 Developer
               </p>
-              <h1 data-aos="fade-right" data-aos-delay="400" className="text-6xl md:text-8xl font-medium text-[#334155] leading-[0.85] tracking-tighter">
+              {/* THE NAME: Modern Serif Polish */}
+              <h1 data-aos="fade-right" data-aos-delay="400" className="font-['Playfair_Display'] italic text-6xl md:text-8xl font-medium text-[#334155] leading-[0.85] tracking-tight">
                 Aayusha<br />
                 <span className="text-[#b4647d]" style={softShadow}>Ghimire</span>
               </h1>
               <div data-aos="fade-right" data-aos-delay="400" className="flex items-center gap-4 pt-2">
                 <div className="w-12 h-[1px] bg-[#334155]/20"></div>
-                <p className="text-xs text-slate-500 font-medium tracking-widest uppercase">
+                <p className="text-[10px] text-slate-500 font-medium tracking-[0.3em] uppercase">
                   Frontend Architecture
                 </p>
               </div>
@@ -147,15 +241,16 @@ function HeroSection() {
           <div style={rightMove} className="transition-transform duration-75 ease-out">
             <div className="flex flex-col items-end text-right mt-32">
               <div className="max-w-[340px]">
-                <h2 data-aos="fade-left" data-aos-delay="400" className="text-4xl md:text-5xl font-medium text-[#334155] leading-tight mb-2">
+                {/* SUB-HEADING: Balanced Italics */}
+                <h2 data-aos="fade-left" data-aos-delay="400" className="font-['Playfair_Display'] italic text-4xl md:text-5xl font-medium text-[#334155] leading-tight mb-2">
                   Frontend<br />
-                  <span className="text-sm font-semibold text-[#b4647d] tracking-widest uppercase">Developer</span>
+                  <span className="font-['Poppins'] not-italic text-[10px] font-semibold text-[#b4647d] tracking-[0.4em] uppercase">Developer</span>
                 </h2>
-                <p data-aos="fade-left" data-aos-delay="400" className="text-sm text-slate-500 font-normal leading-relaxed mb-6">
+                <p data-aos="fade-left" data-aos-delay="400" className="text-sm text-slate-500 font-light leading-relaxed mb-6 tracking-wide">
                   Building desktop-first digital systems with a focus on clean architecture and premium aesthetics.
                 </p>
                 <div data-aos="fade-left" data-aos-delay="400">
-                  <button className="bg-[#334155] text-white px-8 py-2.5 rounded-full text-xs font-semibold tracking-widest uppercase hover:bg-[#b4647d] transition-all active:scale-95 shadow-md">
+                  <button className="bg-[#334155] text-white px-8 py-2.5 rounded-full text-[10px] font-semibold tracking-[0.2em] uppercase hover:bg-[#b4647d] transition-all active:scale-95 shadow-md">
                     Work →
                   </button>
                 </div>
