@@ -38,17 +38,8 @@ function SkillsSection() {
       
       {/* Top Left Header Section */}
       <div className="absolute top-12 left-12 pointer-events-none z-20">
-        <span 
-          className="block mb-3 text-[0.7rem] font-medium uppercase tracking-[0.6em] text-[#b4647d]"
-        >
-          Skill Set
-        </span>
-        <h2 
-          className="text-4xl md:text-5xl font-semibold italic text-[#1a1a1a]" 
-          style={{ fontFamily: "'Playfair Display', serif" }}
-        >
-          Interactive Stack
-        </h2>
+       
+        
       </div>
 
       {/* Physics/Falling Text Container */}
