@@ -36,27 +36,17 @@ function SkillsSection() {
   return (
     <section className="relative w-full h-screen bg-[#FFF5F8] overflow-hidden flex flex-col font-['Poppins']">
       
-      {/* Top Left Header Section */}
       <div className="absolute top-12 left-12 pointer-events-none z-20">
        
         
       </div>
 
-      {/* Physics/Falling Text Container */}
       <div className="absolute inset-0 z-10">
         <FallingText />
       </div>
 
-      {/* Bottom Right Instruction Section */}
-      <div className="absolute bottom-12 right-12 pointer-events-none z-20 text-right">
-        <p 
-          className="text-[0.8rem] font-light uppercase italic tracking-[0.2em] text-[#b4647d] opacity-50"
-        >
-          Grab and Toss to Explore
-        </p>
-      </div>
+     
 
-      {/* Subtle modern decorative element (optional) */}
       <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-[#b4647d] opacity-[0.03] rounded-full blur-3xl pointer-events-none" />
     </section>
   );
