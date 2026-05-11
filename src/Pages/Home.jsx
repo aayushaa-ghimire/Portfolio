@@ -12,14 +12,16 @@ function Home() {
   return (
     <main className="bg-[#fce4ec]">
       <HeroSection className="h-[80vh]" />
+      <SkillsMarquee className="pb-20" />
+      <ReverseSkillsMarquee />
       <AboutMe />
       <SkillsSection />
       <ExperienceSection />
       <InfiniteMarquee />
-            <ParallaxCutout />
-      <SkillsMarquee className="pb-20" />
-      <ReverseSkillsMarquee />
-      
+      <ParallaxCutout />
+
+
+
     </main>
   );
 }
