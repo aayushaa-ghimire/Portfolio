@@ -1,129 +1,92 @@
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, useVelocity } from "framer-motion";
 
-const whyHireData = [
-  { title: "Trending Skills", content: "React 19, Tailwind v4, and cinematic GSAP motion.", id: "01" },
-  { title: "Proven Projects", content: "End-to-end IELTS platform and Vividify IT solutions.", id: "02" },
-  { title: "Growth Mindset", content: "Frontend Lead experience with an insatiable hunger for learning.", id: "03" },
-  { title: "Academic Base", content: "Bridging CS theory with hands-on production engineering.", id: "04" }
+const reasons = [
+  { id: "01", title: "Frontend Lead", desc: "Architecting React 19 ecosystems with a desktop-first approach." },
+  { id: "02", title: "Java & DSA", desc: "Merging backend rigor with high-end UI/UX design principles." },
+  { id: "03", title: "UI Architect", desc: "Premium agency aesthetics: glassmorphism, whitespace, and refined type." },
+  { id: "04", title: "Product Focus", desc: "Building complex platforms like IELTS practice modules and IT agency sites." }
 ];
 
-// Interactive Card Component with Tilt Effect
-function TiltCard({ item, index }) {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
+export default function HireMeSection() {
+  const targetRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: targetRef });
 
-  const mouseXSpring = useSpring(x);
-  const mouseYSpring = useSpring(y);
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-65%"]);
+  const springX = useSpring(x, { stiffness: 100, damping: 30 });
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
-
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-    const xPct = mouseX / width - 0.5;
-    const yPct = mouseY / height - 0.5;
-    x.set(xPct);
-    y.set(yPct);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
+  const scrollVelocity = useVelocity(scrollYProgress);
+  const skewX = useSpring(useTransform(scrollVelocity, [-1, 1], [-20, 20]), {
+    stiffness: 400,
+    damping: 90
+  });
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8, delay: index * 0.1 }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      className="relative group h-[280px] w-full rounded-[32px] bg-[#d6a1b0] p-8 cursor-none shadow-2xl shadow-[#d6a1b0]/20"
-    >
-      <div style={{ transform: "translateZ(50px)" }} className="h-full flex flex-col justify-between">
-        <div>
-          <div className="flex items-center gap-3 mb-6">
-            <span className="text-[10px] font-mono text-white/40 tracking-widest">SEC_{item.id}</span>
-            <div className="h-[1px] w-full bg-white/20 origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100" />
-          </div>
-          <h4 className="text-2xl font-['Playfair_Display'] text-white font-bold mb-4">{item.title}</h4>
-          <p className="text-white/80 font-['Poppins'] text-sm leading-relaxed max-w-[240px]">{item.content}</p>
-        </div>
+    <section ref={targetRef} className="relative h-[300vh] bg-[#FFF5F8]">
+      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
         
-        <div className="flex gap-1.5 overflow-hidden">
-          {[...Array(4)].map((_, i) => (
-            <motion.div 
-              key={i} 
-              animate={{ scaleY: [1, 1.5, 1] }} 
-              transition={{ repeat: Infinity, duration: 2, delay: i * 0.2 }}
-              className="h-4 w-[2px] bg-white/30 rounded-full" 
-            />
+        <div className="absolute inset-0 flex items-center justify-center opacity-5 select-none pointer-events-none">
+          <motion.h2 
+            style={{ x: useTransform(scrollYProgress, [0, 1], [0, -500]) }}
+            className="text-[30vw] font-black font-['Playfair_Display'] whitespace-nowrap text-[#b4647d]"
+          >
+            AAYUSHA GHIMIRE
+          </motion.h2>
+        </div>
+
+        <div className="px-6 lg:px-24 mb-12 relative z-10">
+          <motion.h2 
+            className="text-7xl md:text-9xl font-['Playfair_Display'] text-[#334155] font-bold"
+            style={{ opacity: useTransform(scrollYProgress, [0, 0.2], [1, 0.3]) }}
+          >
+            Why <span className="text-[#b4647d]">Me</span>
+          </motion.h2>
+        </div>
+
+        <motion.div style={{ x: springX, skewX }} className="flex gap-8 px-6 lg:px-24">
+          {reasons.map((item, index) => (
+            <VelocityCard key={item.id} item={item} index={index} />
           ))}
+        </motion.div>
+
+        <div className="absolute bottom-20 left-6 lg:left-24 right-6 lg:right-24 h-[1px] bg-[#334155]/10">
+          <motion.div 
+            style={{ scaleX: scrollYProgress }} 
+            className="h-full bg-[#b4647d] origin-left w-full" 
+          />
         </div>
       </div>
-    </motion.div>
+    </section>
   );
 }
 
-export default function InteractiveHireSection() {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start end", "end start"] });
-
-  // Floating background elements parallax
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
-
+function VelocityCard({ item, index }) {
   return (
-    <section 
-      ref={containerRef}
-      className="relative py-32 px-6 lg:px-24 overflow-hidden perspective-1000" 
-      style={{ backgroundColor: '#FFF5F8' }}
+    <motion.div 
+      whileHover={{ y: -20 }}
+      className="shrink-0 w-[400px] md:w-[500px] h-[350px] md:h-[450px] bg-white rounded-[48px] p-12 border border-[#fce4ec] shadow-sm hover:shadow-2xl hover:shadow-[#b4647d]/10 transition-all duration-700 flex flex-col justify-between group"
     >
-      {/* Dynamic Background Elements */}
-      <motion.div style={{ y: bgY }} className="absolute top-20 right-10 text-[20vw] font-['Playfair_Display'] font-black text-[#b4647d]/5 select-none pointer-events-none">
-        AAYUSHA
-      </motion.div>
-
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          
-          {/* Static Content with Magnetic Pull */}
-          <div className="lg:col-span-5">
-            <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 1 }}>
-              <div className="flex items-center gap-4 mb-6">
-                <div className="h-px w-8 bg-[#b4647d]" />
-                <span className="text-[10px] uppercase tracking-[0.5em] text-[#b4647d] font-bold font-['Poppins']">The Perspective</span>
-              </div>
-              <h3 className="text-6xl md:text-8xl font-['Playfair_Display'] text-[#334155] leading-[0.9] font-bold mb-8">
-                Why <span className="text-[#b4647d]">Hire</span> Me?
-              </h3>
-              <p className="text-[#334155]/60 font-['Poppins'] max-w-sm text-lg leading-relaxed">
-                I don't just build components. I engineer digital experiences that bridge the gap between human emotion and technical logic.
-              </p>
-            </motion.div>
-          </div>
-
-          {/* Grid of Interactive Cards */}
-          <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6 pt-12 md:pt-0">
-            {whyHireData.map((item, index) => (
-              <TiltCard key={item.id} item={item} index={index} />
-            ))}
-          </div>
-        </div>
+      <div>
+        <span className="text-[12px] font-mono font-bold text-[#b4647d] tracking-[0.5em] block mb-6">
+          // {item.id}
+        </span>
+        <h3 className="text-4xl md:text-5xl font-['Playfair_Display'] text-[#334155] font-bold leading-tight group-hover:text-[#0c5adb] transition-colors duration-500">
+          {item.title}
+        </h3>
       </div>
+      
+      <p className="text-lg md:text-xl text-[#334155]/60 font-['Poppins'] leading-relaxed font-normal">
+        {item.desc}
+      </p>
 
-      {/* Modern Detail Decor */}
-      <div className="absolute bottom-10 left-10 flex gap-10">
-        {['JAVA', 'REACT', 'UI/UX', 'DSA'].map((skill) => (
-          <span key={skill} className="text-[10px] font-mono tracking-widest text-[#334155]/20">{skill}</span>
-        ))}
+      <div className="relative h-1 w-full bg-[#fce4ec] rounded-full overflow-hidden">
+        <motion.div 
+          initial={{ x: "-100%" }}
+          whileInView={{ x: "0%" }}
+          transition={{ duration: 1, delay: 0.5 + (index * 0.1) }}
+          className="absolute inset-0 bg-[#b4647d]"
+        />
       </div>
-    </section>
+    </motion.div>
   );
 }
