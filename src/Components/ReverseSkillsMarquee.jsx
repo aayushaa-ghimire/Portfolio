@@ -1,6 +1,4 @@
 
-
-
 import React from 'react';
 import Marquee from "react-fast-marquee";
 
@@ -30,12 +28,7 @@ function ReverseSkillsMarquee() {
         {secondarySkills.map(function(skill, index) {
           return (
             <div key={index} className="flex items-center">
-              {/* 
-                  Typography Adjustments:
-                  - Color matched to #b4647d 
-                  - Font weight normal (400) for clarity
-                  - Playfair Display without forced italics per your project titles
-              */}
+             
               <span 
                 className="text-lg md:text-xl text-[#b4647d] tracking-[0.4em] uppercase px-16"
                 style={{ 

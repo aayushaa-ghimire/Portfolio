@@ -26,12 +26,7 @@ function SkillsMarquee() {
         {skills.map(function(skill, index) {
           return (
             <div key={index} className="flex items-center">
-              {/* 
-                  Typography matched to Project Section:
-                  - Color: #b4647d (Pink heavy)
-                  - Weight: Normal (Requested for clarity)
-                  - Spacing: 0.4em tracking for a premium feel
-              */}
+            
               <span 
                 className="text-lg md:text-xl text-[#b4647d] tracking-[0.4em] uppercase px-16"
                 style={{ 

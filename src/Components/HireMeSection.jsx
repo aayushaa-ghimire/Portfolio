@@ -105,7 +105,6 @@ export default function HireMeSection() {
 
       <div className="relative z-10 w-full h-full flex flex-row justify-between items-center">
         
-        {/* LEFT SIDE: 40vw */}
         <div className="w-[50vw] flex flex-col items-start justify-center pl-16 md:pl-24">
           <motion.div style={{ x: xLeft }} className="w-full">
             <span data-aos="fade-right" className="text-[10px] tracking-[0.5em] text-[#b4647d] uppercase font-bold mb-3 block">

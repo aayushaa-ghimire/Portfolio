@@ -21,7 +21,6 @@ export default function ExperienceSection() {
   return (
     <section className="project-carousel-viewport ">
       <div className="section-header">
-        {/* <span className="header-sub">WORK SELECTION</span> */}
         <h2 className="header-title">Projecs</h2>
       </div>
 
