@@ -15,7 +15,7 @@ const HireMeParallax = () => {
       
       {/* LEFT SIDE: WHY HIRE ME PARAGRAPH */}
       <div className="flex flex-col justify-center px-10 md:px-20 h-full space-y-8 z-10">
-        <span className="text-[#b4647d] font-mono text-sm tracking-[0.4em] uppercase">Professional ID</span>
+        <span className="text-[#b4647d] font-moo text-sm tracking-[0.4em] uppercase">Professional ID</span>
         
         <h2 className="text-5xl md:text-6xl font-['Playfair_Display'] text-[#334155] leading-tight font-normal">
           Why you should <span className="font-bold italic">Hire Me</span>.

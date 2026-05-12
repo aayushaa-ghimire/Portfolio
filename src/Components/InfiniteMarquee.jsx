@@ -19,10 +19,10 @@ const projects = [
 
 export default function ExperienceSection() {
   return (
-    <section className="project-carousel-viewport">
+    <section className="project-carousel-viewport ">
       <div className="section-header">
-        <span className="header-sub">WORK SELECTION</span>
-        <h2 className="header-title">Project Philosophy</h2>
+        {/* <span className="header-sub">WORK SELECTION</span> */}
+        <h2 className="header-title">Projecs</h2>
       </div>
 
       <Swiper
@@ -44,7 +44,7 @@ export default function ExperienceSection() {
         }}
         modules={[Autoplay, FreeMode]}
         className="mySwiper"
-      >
+        >
         {projects.map((proj) => (
           <SwiperSlide key={proj.id}>
             <div className="project-slide-card">
@@ -57,7 +57,7 @@ export default function ExperienceSection() {
                   src={`https://picsum.photos/seed/${proj.id + 25}/800/800`} 
                   alt={proj.title} 
                   className="card-image"
-                />
+                  />
               </div>
 
               <div className="card-footer">

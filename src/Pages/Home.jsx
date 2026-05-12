@@ -20,6 +20,7 @@ function Home() {
       <ExperienceSection />
       <InfiniteMarquee />
       <ParallaxCutout />
+      
       <HireMeSection />
 
 

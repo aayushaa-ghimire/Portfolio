@@ -156,7 +156,7 @@ function AboutMe() {
             data-aos="fade-up"
             data-aos-duration="1200"
             style={{ y: yDown }}
-            src="/img4-nobg.png" 
+            src="/img3-nobg.png" 
             className="relative z-50 h-full w-auto object-contain drop-shadow-2xl" 
             alt="Portrait" 
           />

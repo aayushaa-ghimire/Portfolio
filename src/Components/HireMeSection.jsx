@@ -1,92 +1,174 @@
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring, useVelocity } from "framer-motion";
+import React, { useEffect, useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const reasons = [
-  { id: "01", title: "Frontend Lead", desc: "Architecting React 19 ecosystems with a desktop-first approach." },
+  { id: "01", title: "Frontend Lead", desc: "Architecting React ecosystems with a desktop-first approach." },
   { id: "02", title: "Java & DSA", desc: "Merging backend rigor with high-end UI/UX design principles." },
-  { id: "03", title: "UI Architect", desc: "Premium agency aesthetics: glassmorphism, whitespace, and refined type." },
-  { id: "04", title: "Product Focus", desc: "Building complex platforms like IELTS practice modules and IT agency sites." }
+  { id: "03", title: "UI Architect", desc: "Premium agency aesthetics: glassmorphism and refined type." },
+  { id: "04", title: "UX Strategist", desc: "User-centric research paired with high-conversion interfaces." },
 ];
 
 export default function HireMeSection() {
-  const targetRef = useRef(null);
-  const { scrollYProgress } = useScroll({ target: targetRef });
+  const sectionRef = useRef(null);
+  const canvasRef = useRef(null);
+  const particles = useRef([]);
 
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-65%"]);
-  const springX = useSpring(x, { stiffness: 100, damping: 30 });
-
-  const scrollVelocity = useVelocity(scrollYProgress);
-  const skewX = useSpring(useTransform(scrollVelocity, [-1, 1], [-20, 20]), {
-    stiffness: 400,
-    damping: 90
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
   });
 
+  const xLeft = useTransform(scrollYProgress, [0.4, 1], [0, -40]);
+  const xRight = useTransform(scrollYProgress, [0.4, 1], [0, 40]);
+  const yDown = useTransform(scrollYProgress, [0.4, 1], [0, 25]);
+
+  useEffect(() => {
+    AOS.init({ duration: 1000, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', once: false });
+
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    let animationFrameId;
+
+    const resize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+
+    const drawStar = (p) => {
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rotation);
+      ctx.beginPath();
+      for (let i = 0; i < 4; i++) {
+        ctx.rotate(Math.PI / 2);
+        ctx.lineTo(0, p.size);
+        ctx.lineTo(p.size * 0.25, 0);
+      }
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = p.life;
+      ctx.fill();
+      ctx.restore();
+    };
+
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.current.forEach((p, index) => {
+        p.x += p.speedX; p.y += p.speedY;
+        p.rotation += p.spin; p.life -= p.decay;
+        if (p.life <= 0) particles.current.splice(index, 1);
+        else drawStar(p);
+      });
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    window.addEventListener('resize', resize);
+    resize();
+    animate();
+    return () => {
+      window.removeEventListener('resize', resize);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
+
+  const handleMouseMove = (e) => {
+    const rect = sectionRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    for (let i = 0; i < 2; i++) {
+      particles.current.push({
+        x, y, size: Math.random() * 3 + 1,
+        color: Math.random() > 0.5 ? '#b4647d' : '#fce4ec',
+        speedX: (Math.random() - 0.5) * 1,
+        speedY: (Math.random() - 0.5) * 1,
+        rotation: Math.random() * Math.PI,
+        spin: (Math.random() - 0.5) * 0.04,
+        life: 1, decay: Math.random() * 0.02 + 0.01
+      });
+    }
+  };
+
   return (
-    <section ref={targetRef} className="relative h-[300vh] bg-[#FFF5F8]">
-      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
+    <section 
+      ref={sectionRef} 
+      onMouseMove={handleMouseMove}
+      className="relative w-full  pt-20 pb-20 overflow-hidden !bg-[#FFF5F8] font-['Poppins'] flex items-center z-10"
+    >
+      <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none z-[100]" />
+
+      <motion.div style={{ x: xRight }} className="absolute bottom-[-1rem] right-[-2rem] opacity-[0.015] select-none z-0 pointer-events-none">
+        <h2 className="text-[16rem] font-bold text-[#b4647d] font-['Playfair_Display'] italic">
+          Me
+        </h2>
+      </motion.div>
+
+      <div className="relative z-10 w-full h-full flex flex-row justify-between items-center">
         
-        <div className="absolute inset-0 flex items-center justify-center opacity-5 select-none pointer-events-none">
-          <motion.h2 
-            style={{ x: useTransform(scrollYProgress, [0, 1], [0, -500]) }}
-            className="text-[30vw] font-black font-['Playfair_Display'] whitespace-nowrap text-[#b4647d]"
-          >
-            AAYUSHA GHIMIRE
-          </motion.h2>
+        {/* LEFT SIDE: 40vw */}
+        <div className="w-[50vw] flex flex-col items-start justify-center pl-16 md:pl-24">
+          <motion.div style={{ x: xLeft }} className="w-full">
+            <span data-aos="fade-right" className="text-[10px] tracking-[0.5em] text-[#b4647d] uppercase font-bold mb-3 block">
+              Collaboration
+            </span>
+            <h2 
+              data-aos="fade-right" data-aos-delay="200" 
+              className="text-5xl md:text-7xl font-normal text-[#1e293b] leading-[1] mb-8 font-['Playfair_Display']"
+            >
+              Hire <span className="text-[#b4647d]">Me</span>
+            </h2>
+
+            <div className="space-y-4 w-full">
+              {reasons.map((item, index) => (
+                <div 
+                  key={item.id}
+                  data-aos="fade-right"
+                  data-aos-delay={300 + (index * 100)}
+                  className="flex gap-5 items-center py-4 px-5 bg-[#fce4ec] rounded-[1rem] border border-[#fce4ec] transition-all duration-500 hover:bg-white hover:shadow-lg"
+                >
+                  <div className="flex flex-col items-center opacity-30">
+                    <span className="text-[#b4647d] text-[8px] font-bold font-mono">//</span>
+                    <span className="text-[#b4647d] text-[10px] font-bold font-mono">{item.id}</span>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-normal text-[#1e293b] leading-tight">{item.title}</h3>
+                    <p className="text-[11px] text-[#64748b] leading-relaxed font-normal mt-1">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
 
-        <div className="px-6 lg:px-24 mb-12 relative z-10">
-          <motion.h2 
-            className="text-7xl md:text-9xl font-['Playfair_Display'] text-[#334155] font-bold"
-            style={{ opacity: useTransform(scrollYProgress, [0, 0.2], [1, 0.3]) }}
-          >
-            Why <span className="text-[#b4647d]">Me</span>
-          </motion.h2>
-        </div>
+        <motion.div 
+          className="w-[35vw] h-full flex items-center justify-center relative pr-12"
+          style={{ x: xRight }}
+        >
+          <div data-aos="fade-left" data-aos-delay="400" className="absolute top-[35%] right-[10%] z-[60]">
+            <div className="bg-[#b4647d] py-4 px-6 shadow-xl rounded-sm rounded-tr-[2rem] text-center min-w-[110px]">
+              <span className="text-[8px] font-bold tracking-widest text-pink-100 uppercase block">Result Driven</span>
+              <h4 className="text-sm font-normal text-white">Full-Time</h4>
+            </div>
+          </div>
 
-        <motion.div style={{ x: springX, skewX }} className="flex gap-8 px-6 lg:px-24">
-          {reasons.map((item, index) => (
-            <VelocityCard key={item.id} item={item} index={index} />
-          ))}
+          <motion.img 
+            data-aos="fade-up" data-aos-duration="1200"
+            style={{ y: yDown }}
+            src="/img4-nobg.png" 
+            className="relative z-50 h-[85%] w-auto object-contain drop-shadow-[0_20px_25px_rgba(0,0,0,0.12)]" 
+            alt="Portrait" 
+          />
+
+          {/* Location Badge */}
+          <div data-aos="fade-right" data-aos-delay="600" className="absolute bottom-[22%] left-[2%] z-[60]">
+            <div className="bg-white py-4 px-6 shadow-xl rounded-sm border-r-4 border-[#b4647d]">
+              <span className="text-[8px] font-bold tracking-widest text-[#b4647d] uppercase block">Location</span>
+              <h4 className="text-sm font-normal text-[#1e293b]">Remote / Hybrid</h4>
+            </div>
+          </div>
         </motion.div>
 
-        <div className="absolute bottom-20 left-6 lg:left-24 right-6 lg:right-24 h-[1px] bg-[#334155]/10">
-          <motion.div 
-            style={{ scaleX: scrollYProgress }} 
-            className="h-full bg-[#b4647d] origin-left w-full" 
-          />
-        </div>
       </div>
     </section>
-  );
-}
-
-function VelocityCard({ item, index }) {
-  return (
-    <motion.div 
-      whileHover={{ y: -20 }}
-      className="shrink-0 w-[400px] md:w-[500px] h-[350px] md:h-[450px] bg-white rounded-[48px] p-12 border border-[#fce4ec] shadow-sm hover:shadow-2xl hover:shadow-[#b4647d]/10 transition-all duration-700 flex flex-col justify-between group"
-    >
-      <div>
-        <span className="text-[12px] font-mono font-bold text-[#b4647d] tracking-[0.5em] block mb-6">
-          // {item.id}
-        </span>
-        <h3 className="text-4xl md:text-5xl font-['Playfair_Display'] text-[#334155] font-bold leading-tight group-hover:text-[#0c5adb] transition-colors duration-500">
-          {item.title}
-        </h3>
-      </div>
-      
-      <p className="text-lg md:text-xl text-[#334155]/60 font-['Poppins'] leading-relaxed font-normal">
-        {item.desc}
-      </p>
-
-      <div className="relative h-1 w-full bg-[#fce4ec] rounded-full overflow-hidden">
-        <motion.div 
-          initial={{ x: "-100%" }}
-          whileInView={{ x: "0%" }}
-          transition={{ duration: 1, delay: 0.5 + (index * 0.1) }}
-          className="absolute inset-0 bg-[#b4647d]"
-        />
-      </div>
-    </motion.div>
   );
 }
