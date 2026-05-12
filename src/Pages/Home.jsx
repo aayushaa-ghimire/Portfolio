@@ -7,6 +7,7 @@ import InfiniteMarquee from '../Components/InfiniteMarquee';
 import ReverseSkillsMarquee from '../Components/ReverseSkillsMarquee';
 import SkillsMarquee from '../Components/SkillsMarquee';
 import ParallaxCutout from '../Components/ParallaxCutout';
+import HireMeSection from '../Components/HireMeSection';
 
 function Home() {
   return (
@@ -19,6 +20,7 @@ function Home() {
       <ExperienceSection />
       <InfiniteMarquee />
       <ParallaxCutout />
+      <HireMeSection />
 
 
     </main>
