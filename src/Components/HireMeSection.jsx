@@ -103,7 +103,7 @@ export default function HireMeSection() {
         </h2>
       </motion.div>
 
-      <div className="relative z-10 w-full h-full flex flex-row justify-between items-center">
+      <div className="relative z-10 w-full h-full flex flex-row justify-around items-center">
         
         <div className="w-[50vw] flex flex-col items-start justify-center pl-16 md:pl-24">
           <motion.div style={{ x: xLeft }} className="w-full">

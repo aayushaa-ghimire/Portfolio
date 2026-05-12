@@ -17,9 +17,9 @@ function Home() {
       <ReverseSkillsMarquee />
       <AboutMe />
       <SkillsSection />
-      <ExperienceSection />
+      {/* <ExperienceSection /> */}<ParallaxCutout />
       <InfiniteMarquee />
-      <ParallaxCutout />
+      {/* <ParallaxCutout /> */}<ExperienceSection />
       <HireMeSection />
 
 

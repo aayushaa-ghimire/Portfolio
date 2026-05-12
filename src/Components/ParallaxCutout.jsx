@@ -8,7 +8,7 @@ const ParallaxCutout = () => {
         style={{ 
           fontFamily: "'Poppins', sans-serif",  
           fontWeight: 400, 
-          backgroundImage: "url('/cutout.jpeg')",
+          backgroundImage: "url('/img4.jpeg')",
           backgroundAttachment: 'fixed',
           backgroundPosition: "center",
           backgroundRepeat: 'no-repeat',
