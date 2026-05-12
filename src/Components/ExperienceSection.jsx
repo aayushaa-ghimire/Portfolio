@@ -101,14 +101,16 @@ import Folder from "./Folder";
 
 const experiences = [
   { 
-    year: "2026", role: "Frontend Lead", company: "Vividify Solutions", 
-    detail: "Architecting premium React systems with a desktop-first philosophy.",
-    category: "Development"
+    role: "Frontend Developer", 
+    company: "Vividify Solutions", 
+    duration: "Jan 2026 - April 2026",
+    details: "Architecting premium React systems with a desktop-first philosophy."
   },
   { 
-    year: "2025", role: "Virtual Assistant", company: "Maven Solutions", 
-    detail: "Crafting architectural layouts with refined typography.",
-    category: "Communication"
+    role: "Virtual Assistant", 
+    company: "Maven Solutions", 
+    duration: "Feb 2025 - Nov 2025",
+    details: "Crafting architectural layouts with refined typography."
   }
 ];
 
@@ -116,46 +118,66 @@ export default function ExperienceSection() {
   const pinkTheme = "#b4647d";
 
   return (
-    <section className="h-screen overflow-y-scroll snap-y snap-mandatory bg-[#fce4ec] hide-scrollbar">
-      {experiences.map((exp, i) => (
-        <div key={i} className="h-screen w-full flex flex-col items-center justify-center snap-start relative">
-          
-          <div className="text-center mb-32 select-none pointer-events-none">
-            <span className="text-[10px] tracking-[0.6em] text-[#b4647d] font-bold uppercase opacity-60">Portfolio</span>
-            <h2 className="text-8xl font-['Playfair_Display'] font-bold text-[#334155] mt-4">
-              Recent <span className="italic text-[#b4647d]">Works</span>
-            </h2>
-          </div>
+    <>
+      <style>{`
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      `}</style>
 
-          <Folder 
-            size={2.5} 
-            color={pinkTheme}
-            items={[
-              <div className="p-4 flex flex-col justify-between h-full bg-slate-50">
-                 <span className="text-[6px] font-mono uppercase tracking-widest text-[#334155]/40">{exp.category}</span>
-                 <h4 className="text-[9px] font-['Playfair_Display'] font-bold text-[#334155] leading-tight mb-2">{exp.role}</h4>
-              </div>,
-              <div className="p-4 flex flex-col justify-center items-center h-full text-center">
-                 <p className="text-[8px] font-bold text-[#b4647d] mb-1">{exp.year}</p>
-                 <p className="text-[7px] uppercase tracking-tighter text-[#334155] font-black">{exp.company}</p>
-              </div>,
-              <div className="p-5 flex flex-col h-full bg-white">
-                <div className="w-4 h-[1px] bg-[#b4647d] mb-3" />
-                <p className="text-[7px] text-[#334155]/80 font-['Poppins'] leading-relaxed font-normal">
-                  {exp.detail}
-                </p>
-                <div className="mt-auto flex justify-end">
-                  <span className="text-[5px] font-bold text-[#334155]/20 uppercase">0{i+1}</span>
-                </div>
-              </div>
-            ]}
-          />
-          
-          <div className="mt-24">
-             <p className="font-['Poppins'] text-[10px] uppercase tracking-widest text-[#334155]/30">Click to expand</p>
-          </div>
+      <section className="h-screen bg-[#fce4ec] relative overflow-hidden flex flex-col">
+        {/* Static Header */}
+        <div className="pt-20 pb-10 text-center z-10">
+          <span className="text-[10px] tracking-[0.6em] text-[#b4647d] font-bold uppercase opacity-60">Career Path</span>
+          <h2 className="text-7xl font-['Playfair_Display'] font-bold text-[#334155] mt-4">
+            Recent <span className="italic text-[#b4647d]">Works</span>
+          </h2>
         </div>
-      ))}
-    </section>
+
+        {/* Horizontal Scroll Container */}
+        <div className="flex-1 overflow-x-scroll snap-x snap-mandatory no-scrollbar flex items-center px-[10vw]">
+          {experiences.map((exp, i) => (
+            <div key={i} className="min-w-full lg:min-w-[50vw] h-full flex items-center justify-center snap-center">
+              <Folder 
+                size={2.8} 
+                color={pinkTheme}
+                items={[
+                  // Paper 1: Role
+                  <div className="p-3 flex flex-col items-center justify-center h-full bg-slate-50">
+                     <h4 className="text-[7px] font-['Poppins'] font-normal text-[#334155] text-center tracking-tight leading-tight">{exp.role}</h4>
+                  </div>,
+                  // Paper 2: Company
+                  <div className="p-3 flex flex-col items-center justify-center h-full">
+                     <p className="text-[7px] font-['Playfair_Display'] italic text-[#b4647d] font-bold text-center">{exp.company}</p>
+                  </div>,
+                  // Paper 3: Full Detailed Card
+                  <div className="p-4 flex flex-col justify-between h-full bg-white font-['Poppins']">
+                    <div className="flex justify-between items-start border-b border-black/[0.03] pb-2">
+                      <h4 className="text-[8px] font-bold text-[#334155] leading-none">{exp.role}</h4>
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#b4647d]" />
+                    </div>
+                    
+                    <div className="text-center py-2">
+                      <p className="text-[6px] font-medium text-[#334155] uppercase tracking-widest">{exp.company}</p>
+                    </div>
+                    
+                    <div className="flex justify-between items-end border-t border-black/[0.03] pt-2">
+                      <p className="text-[5px] text-[#334155]/40 font-mono tracking-tighter uppercase">{exp.duration}</p>
+                      <span className="text-[5px] font-bold text-[#b4647d]/30">0{i+1}</span>
+                    </div>
+                  </div>
+                ]}
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Horizontal Indicator */}
+        <div className="pb-16 text-center">
+           <p className="font-['Poppins'] text-[10px] uppercase tracking-[0.4em] text-[#b4647d] font-bold animate-pulse">
+             Swipe or Scroll Horizontally
+           </p>
+        </div>
+      </section>
+    </>
   );
 }
