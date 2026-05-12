@@ -164,9 +164,9 @@ const Folder = ({ color = '#b4647d', size = 1, items = [], className = '' }) => 
 
   const getOpenTransform = index => {
     // Adjusted Y-axis values to keep cards lower and closer to folder body
-    if (index === 0) return 'translate(-110%, -45%) rotate(-12deg)';
-    if (index === 1) return 'translate(10%, -45%) rotate(12deg)';
-    if (index === 2) return 'translate(-50%, -65%) rotate(0deg)';
+    if (index === 0) return 'translate(-110%, -25%) rotate(-12deg)';
+    if (index === 1) return 'translate(10%, -25%) rotate(12deg)';
+    if (index === 2) return 'translate(-50%, -45%) rotate(0deg)';
     return '';
   };
 

@@ -23,19 +23,21 @@ export default function ExperienceSection() {
   return (
     <section className="min-h-screen w-full bg-[#fce4ec] flex flex-col justify-between relative">
       
-      <header className="pt-32 pb-48 text-center relative z-50">
+      {/* Reduced padding-top and padding-bottom to bring folders up */}
+      <header className="pt-10 pb-35 text-center relative z-50">
         <span className="font-['Poppins'] text-[10px] tracking-[0.6em] uppercase text-[#b4647d] font-bold opacity-60">
           Experience
         </span>
-        <h2 className="font-['Playfair_Display'] text-7xl font-bold text-[#334155] mt-4">
+        <h2 className="font-['Playfair_Display'] text-6xl font-bold text-[#334155] mt-4">
           Recent <span className="text-[#b4647d] italic">Works</span>
         </h2>
       </header>
 
+      {/* Adjusted padding around folders for a tighter fit */}
       <div className="flex-1 flex items-center w-full">
         <div className="flex w-full snap-x snap-mandatory no-scrollbar px-[10vw]">
           {experiences.map((exp, i) => (
-            <div className="min-w-full lg:min-w-[50%] flex items-center justify-center snap-center py-24" key={i}>
+            <div className="min-w-full lg:min-w-[50%] flex items-center justify-center snap-center py-12" key={i}>
               <Folder 
                 size={2.4} 
                 color={pinkTheme}
@@ -67,7 +69,7 @@ export default function ExperienceSection() {
         </div>
       </div>
 
-      <footer className="pb-16 pt-4 text-center relative z-50">
+      <footer className="pb-16 pt-10 text-center relative z-50">
         <motion.a 
           href="/resume.pdf" 
           download 
