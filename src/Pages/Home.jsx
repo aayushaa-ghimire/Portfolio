@@ -21,7 +21,6 @@ function Home() {
       <ParallaxCutout />
 
 
-
     </main>
   );
 }
