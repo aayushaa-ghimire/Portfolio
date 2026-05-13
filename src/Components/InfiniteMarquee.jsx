@@ -21,7 +21,12 @@ export default function ExperienceSection() {
   return (
     <section className="project-carousel-viewport ">
       <div className="section-header">
-        <h2 className="header-title">Projecs</h2>
+<span className="font-['Poppins'] text-[10px] tracking-[0.6em] uppercase text-[#334155] font-bold opacity-60">
+          My Projects
+        </span>
+        <div>
+        <h2 className="header-title"> Projects</h2>
+        </div>
       </div>
 
       <Swiper

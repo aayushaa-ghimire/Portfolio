@@ -3,7 +3,7 @@ import FallingText from './FallingText';
 
 function SkillsSection() {
   return (
-    <section className="relative w-full h-screen bg-[#FFF5F8] overflow-hidden flex flex-col font-['Poppins']">
+    <section className="relative w-full h-screen bg-[#FFF5F8] py-40  flex flex-col font-['Poppins']">
       <div className="absolute top-12 left-12 pointer-events-none z-20">
       </div>
       <div className="absolute inset-0 z-10">
