@@ -6,18 +6,20 @@ const MarqueeComponent = Marquee.default || Marquee;
 
 function ReverseSkillsMarquee() {
   const secondarySkills = [
-    "Figma", 
-    "PostgreSQL", 
-    "Spring Boot", 
-    "Git / GitHub", 
-    "Reflection API",
-    "Generics",
-    "VS Code",
-    "Responsive Design"
+    "React.js", 
+    "Javascript", 
+    "Typescript", 
+    "Tailwind CSS",  
+    "HTML",
+    "Vite",
+    "CSS",
+    "Redux",
+    "My SQL",
+    "Git / Github"
   ];
 
   return (
-    <div className="relative w-full bg-[#FFF5F8] py-10 overflow-hidden border-b border-[#b4647d]/10 z-[15]">
+    <div className="relative w-full bg-[#FFF5F8] py-5 overflow-hidden border-b border-[#b4647d]/10 z-[15]">
       <MarqueeComponent 
         gradient={false} 
         speed={50} 
@@ -30,7 +32,7 @@ function ReverseSkillsMarquee() {
             <div key={index} className="flex items-center">
              
               <span 
-                className="text-lg md:text-xl text-[#b4647d] tracking-[0.4em] uppercase px-16"
+                className="text-md md:text-lg text-[#b4647d] tracking-[0.2em]  px-16"
                 style={{ 
                   fontFamily: "'Playfair Display', serif",
                   fontWeight: 400 
@@ -39,7 +41,7 @@ function ReverseSkillsMarquee() {
                 {skill}
               </span>
               
-              <span className="text-[#b4647d]/40 text-lg">✦</span>
+              <span className="text-[#b4647d]/40 text-md">✦</span>
             </div>
           );
         })}
