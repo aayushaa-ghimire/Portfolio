@@ -83,8 +83,8 @@ function AboutMe() {
               animate="animate"
               className="bg-[#b4647d] py-2.5 px-5 shadow-xl rounded-bl-2xl text-right"
             >
-              <span className="text-[8px] font-bold tracking-widest text-[#fce4ec] uppercase">Visual Arts</span>
-              <h4 className="text-sm font-semibold text-white">Web Designer</h4>
+              <span className="text-[8px] font-medium tracking-widest text-[#fce4ec] uppercase">Visual Arts</span>
+              <h4 className="text-sm font-medium text-white">Web Designer</h4>
             </motion.div>
           </div>
         </motion.div>
@@ -97,7 +97,7 @@ function AboutMe() {
             <h2 
               data-aos="fade-left" 
               data-aos-delay="200" 
-              className="text-6xl md:text-8xl font-medium text-[#334155] leading-[0.9] tracking-tighter mb-8 "
+              className="text-6xl md:text-6xl font-medium text-[#334155] leading-[0.9] tracking-tighter mb-8 "
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
               About <span className="text-[#b4647d]">Me</span>
@@ -105,7 +105,7 @@ function AboutMe() {
             <p 
               data-aos="fade-left" 
               data-aos-delay="300" 
-              className="max-w-lg text-[#334155]/80 text-lg leading-[1.8] font-light tracking-wide mb-10"
+              className="max-w-lg text-[#334155]/80 text-md leading-[1.8] font-medium tracking-wide mb-10"
             >
               I approach frontend architecture like an architect. By combining UI/UX design with a 
               desktop-first philosophy, I build high-end agency experiences.
