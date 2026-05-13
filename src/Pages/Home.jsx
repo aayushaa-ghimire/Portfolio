@@ -21,7 +21,9 @@ function Home() {
       {/* <ExperienceSection /> */}<ParallaxCutout />
       <InfiniteMarquee />
       {/* <ParallaxCutout /> */}<ExperienceSection />
-      <HireMeSection />
+      {/* <HireMeSection /> */}
+      <SkillsMarquee className="pb-20" />
+      <ReverseSkillsMarquee />
       <ContactSection />
 
 
