@@ -13,9 +13,27 @@ html, body {
   background-color: var(--bg-pink);
   font-family: 'Poppins', sans-serif;
   width: 100%;
+  /* Use !important to override any library defaults */
+  cursor: none !important;
 }
 
-/* Layering Strategy */
+/* Ensure all interactive elements also hide the default cursor */
+a, button, input, textarea, [role="button"], .group {
+  cursor: none !important;
+}
+
+/* Global Cursor Canvas Fix */
+#cursor-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none; /* Crucial: allows clicks to pass through to buttons */
+  z-index: 999999; /* Higher than any other layer */
+}
+
+/* Rest of your existing layer styles... */
 .hero-viewport {
   position: relative;
   width: 100%;
@@ -40,20 +58,10 @@ html, body {
   pointer-events: none;
 }
 
-/* THE ULTIMATE ANIMATION */
 @keyframes ultimate-exit {
-  0% {
-    transform: translate(0, 0) scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: translate(-42%, 20vh) scale(0.65);
-    opacity: 0.8;
-  }
-  100% {
-    transform: translate(-42%, 80vh) scale(0.6);
-    opacity: 0;
-  }
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  50% { transform: translate(-42%, 20vh) scale(0.65); opacity: 0.8; }
+  100% { transform: translate(-42%, 80vh) scale(0.6); opacity: 0; }
 }
 
 .scroll-smooth-img {
@@ -63,7 +71,6 @@ html, body {
   will-change: transform, opacity;
 }
 
-/* Restores your original section behavior */
 section:not(.hero-viewport) {
   position: relative;
   z-index: 30;

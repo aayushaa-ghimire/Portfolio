@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import ScrollToTop from './Components/ScrollToTop';
+import CustomCursor from './Components/CustonCursor';
 
 function App() {
   useEffect(function() {
@@ -15,6 +16,7 @@ function App() {
   return (
     <div>
       <ScrollToTop />
+      <CustomCursor/>
       <AppRoutes />
     </div>
   );
