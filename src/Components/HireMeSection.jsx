@@ -30,7 +30,7 @@ export default function HireMeSection() {
   return (
     <section 
       ref={sectionRef} 
-      className="relative w-full min-h-screen !bg-[#FFF5F8] font-['Poppins'] flex items-center py-20 z-10"
+      className="relative w-full min-h-screen !bg-[#FFF5F8] font-['Poppins'] flex items-center py-10 z-10"
     >
       <motion.div style={{ x: xRight }} className="absolute bottom-[-1rem] right-[-2rem] opacity-[0.015] select-none z-0 pointer-events-none">
         <h2 className="text-[16rem] font-bold text-[#b4647d] font-['Playfair_Display'] italic">
