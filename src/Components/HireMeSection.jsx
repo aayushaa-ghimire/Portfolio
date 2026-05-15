@@ -2,104 +2,96 @@ import React, { useEffect, useRef, useState } from "react";
 import "./HireMeStyles.css";
 
 const steps = [
-  { id: "01", title: "Discovery", tag: "PHASE // AUDIT", desc: "Strategic alignment on frontend architecture and project scope." },
-  { id: "02", title: "UI Precision", tag: "PHASE // VISUAL", desc: "High-end agency aesthetics with refined typography and whitespace." },
-  { id: "03", title: "Raw Logic", tag: "PHASE // DEV", desc: "Performant React and Java systems built with architectural precision." },
-  { id: "04", title: "Final Delivery", tag: "PHASE // LIVE", desc: "Zero-bloat performance optimization and final deployment." },
+  { id: "01", title: "Discovery", tag: "PHASE // AUDIT" },
+  { id: "02", title: "UI Precision", tag: "PHASE // VISUAL" },
+  { id: "03", title: "Raw Logic", tag: "PHASE // DEV" },
+  { id: "04", title: "Final Delivery", tag: "PHASE // LIVE" },
 ];
 
 export default function HireMeSection() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const scrollerRef = useRef(null);
-  const scrollItemsRef = useRef([]);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const containerRef = useRef(null);
 
-  useEffect(() => {
-    const scroller = scrollerRef.current;
-    
-    const handleSnapChange = (event) => {
-      const index = scrollItemsRef.current.indexOf(event.snapTargetBlock);
-      if (index !== -1) setActiveIndex(index);
-    };
-
-    scroller.addEventListener("scrollsnapchange", handleSnapChange);
-    
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveIndex(scrollItemsRef.current.indexOf(entry.target));
-          }
-        });
-      },
-      { root: scroller, threshold: 0.6 }
-    );
-
-    scrollItemsRef.current.forEach((item) => item && observer.observe(item));
-
-    return () => {
-      scroller.removeEventListener("scrollsnapchange", handleSnapChange);
-      observer.disconnect();
-    };
-  }, []);
+  const handleScroll = (e) => {
+    const { scrollTop, clientHeight } = e.target;
+    // Calculate how far we've scrolled in units of "screens"
+    setScrollProgress(scrollTop / clientHeight);
+  };
 
   return (
-    <div className="bg-[#fff5f8] min-h-screen flex items-center justify-center font-['Poppins'] overflow-hidden">
-      <main 
-        className="relative w-full max-w-[1000px] h-[750px] perspective-[1500px] transform-style-3d"
-        data-active-index={activeIndex}
+    <section className="bg-[#fff5f8] h-screen w-full relative font-['Poppins']">
+      {/* Full-screen Scroller */}
+      <div 
+        ref={containerRef}
+        onScroll={handleScroll}
+        className="absolute inset-0 overflow-y-auto snap-y snap-mandatory no-scrollbar z-50"
       >
-        <div className="card-stack absolute inset-0 transform-style-3d pointer-events-none">
-          {steps.map((step, i) => (
-            <div 
-              key={step.id} 
-              className={`card absolute inset-0 m-auto w-[550px] h-[350px] rounded-[2.5rem] bg-[#c498a5] border border-white/20 p-10 shadow-2xl flex flex-col justify-between card-${i}`}
-            >
-              {/* Top Bar */}
-              <div className="flex justify-between items-center">
-                <span className="text-[10px] font-bold tracking-widest text-white/60 uppercase">
-                  {step.tag}
-                </span>
-                <span className="text-white/80 text-xl font-serif italic">✦</span>
-              </div>
+        {steps.map((_, i) => (
+          <div key={i} className="w-full h-screen snap-start" />
+        ))}
+      </div>
 
-              {/* Main Content */}
-              <div className="text-center flex flex-col items-center">
-                <h2 className="text-6xl font-['Playfair_Display'] text-white leading-none mb-2">
-                  Hire <span className="italic opacity-80">Me</span>
-                </h2>
-                <span className="text-3xl font-['Playfair_Display'] text-white/90 italic mb-1">{step.id}</span>
-                <h3 className="text-5xl font-['Poppins'] font-bold text-white tracking-tight leading-none mb-6">
-                  {step.title}
-                </h3>
-                
-                {/* Dotted Line Aesthetic */}
-                <div className="w-full space-y-3 opacity-40">
-                  <div className="w-full border-b border-dotted border-white" />
-                  <div className="w-full border-b border-dotted border-white" />
-                  <div className="w-full border-b border-dotted border-white" />
-                  <div className="w-[70%] border-b border-dotted border-white" />
+      {/* Visual Header */}
+      <div className=" top-10 left-0 w-full text-center z-10 pointer-events-none">
+        <p className="text-[10px] tracking-[1em] text-[#b4647d] font-bold uppercase mb-2 opacity-60">Process</p>
+        <h2 className="text-7xl font-['Playfair_Display'] text-[#4a1d1d]">
+          Hire <span className="text-[#b4647d] italic">Me</span>
+        </h2>
+      </div>
+
+      {/* Centered Card Viewport */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="relative w-[600px] h-[400px] perspective-[1500px] transform-style-3d">
+          {steps.map((step, i) => {
+            // Distance from the "active" center (0 is perfectly centered)
+            const distance = i - scrollProgress;
+            const absDistance = Math.abs(distance);
+            
+            // The "Fly Out" Logic: Card pops out as it approaches the center
+            const translateY = distance * 20; // Slight vertical stack
+            const translateZ = absDistance < 0.5 ? (1 - absDistance * 2) * 200 : 0;
+            const rotateX = absDistance < 0.5 ? distance * -40 : 0;
+            const opacity = 1 - absDistance * 0.8;
+
+            return (
+              <div 
+                key={step.id} 
+                className="card absolute inset-0 m-auto w-[520px] h-[340px] rounded-[2.5rem] bg-[#b4647d] border border-white/20 p-10 shadow-2xl flex flex-col justify-between"
+                style={{
+                  transform: `translateY(${translateY}px) translateZ(${translateZ}px) rotateX(${rotateX}deg)`,
+                  opacity: opacity,
+                  zIndex: Math.round(10 - absDistance),
+                  display: absDistance > 1.5 ? 'none' : 'flex' // Performance optimization
+                }}
+              >
+                <div className="flex justify-between items-center">
+                  <span className="text-[10px] font-black tracking-[0.3em] text-white/60 uppercase">{step.tag}</span>
+                  <span className="text-white/80 text-xl font-serif">✦✦</span>
+                </div>
+
+                <div className="text-center flex flex-col items-center">
+                  <span className="text-2xl font-['Playfair_Display'] text-white/90 italic">{step.id}</span>
+                  <h3 className="text-5xl font-bold text-white tracking-tight leading-none mb-6 uppercase">
+                    {step.title}
+                  </h3>
+                  
+                  {/* Dotted lines from reference image */}
+                  <div className="w-full space-y-2 opacity-30">
+                    <div className="w-full border-b border-dotted border-white" />
+                    <div className="w-full border-b border-dotted border-white" />
+                    <div className="w-[60%] border-b border-dotted border-white mx-auto" />
+                  </div>
+                </div>
+
+                <div className="flex justify-between items-center text-[9px] font-black tracking-[0.4em] text-white/50 uppercase">
+                  <span>PHASE // HIREME</span>
+                  <span>{step.tag}</span>
                 </div>
               </div>
-
-              {/* Footer Bar */}
-              <div className="flex justify-between items-center text-[9px] font-black tracking-widest text-white/50 uppercase">
-                <span>Phase // HireMe</span>
-                <span>{step.tag}</span>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
-
-        <div ref={scrollerRef} className="scroller w-full h-full overflow-y-auto snap-y snap-mandatory no-scrollbar relative z-30">
-          {steps.map((_, i) => (
-            <div 
-              key={i} 
-              ref={(el) => (scrollItemsRef.current[i] = el)} 
-              className="scroll-item w-full h-full snap-start" 
-            />
-          ))}
-        </div>
-      </main>
-    </div>
+      </div>
+    </section>
   );
 }
