@@ -1,0 +1,50 @@
+@layer scroll-driven-animations {
+  html {
+    timeline-scope: --si-0, --si-1, --si-2, --si-3;
+  }
+
+  .scroller {
+    scroll-timeline: --scroll-timeline y;
+  }
+
+  .scroll-item:nth-child(1) { view-timeline: --si-0 y; }
+  .scroll-item:nth-child(2) { view-timeline: --si-1 y; }
+  .scroll-item:nth-child(3) { view-timeline: --si-2 y; }
+  .scroll-item:nth-child(4) { view-timeline: --si-3 y; }
+
+  @keyframes card--inactive {
+    0% { transform: translateY(10%) rotateX(-5deg) scale(0.9) translateZ(-200px); opacity: 0; }
+    50% { transform: translateY(0) rotateX(0) scale(1) translateZ(0); opacity: 1; }
+    100% { transform: translateY(-10%) rotateX(5deg) scale(0.9) translateZ(-200px); opacity: 0; }
+  }
+
+  @keyframes card--active {
+    0% { transform: translateY(10%) rotateX(-5deg) scale(0.9) translateZ(-200px); }
+    30% { transform: translateY(100%) rotateX(-15deg) translateZ(50px); }
+    50% { transform: translateY(0) rotateX(0) scale(1) translateZ(0); }
+    70% { transform: translateY(-100%) rotateX(15deg) translateZ(50px); }
+    100% { transform: translateY(-10%) rotateX(5deg) scale(0.9) translateZ(-200px); }
+  }
+
+  .card {
+    animation: card--inactive cubic-bezier(0.4, 0, 0.2, 1) both;
+    animation-range: cover -10% cover 110%;
+  }
+
+  .card-0 { animation-timeline: --si-0; }
+  .card-1 { animation-timeline: --si-1; }
+  .card-2 { animation-timeline: --si-2; }
+  .card-3 { animation-timeline: --si-3; }
+
+  main[data-active-index="0"] .card-0,
+  main[data-active-index="1"] .card-1,
+  main[data-active-index="2"] .card-2,
+  main[data-active-index="3"] .card-3 {
+    animation-name: card--active;
+    animation-range: cover;
+  }
+}
+
+.transform-style-3d { transform-style: preserve-3d; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
