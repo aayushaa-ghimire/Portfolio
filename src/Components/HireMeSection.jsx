@@ -131,22 +131,19 @@ const reasons = [
 export default function HireMeSection() {
   const sectionRef = useRef(null);
 
-  // Intensified Scroll Tracking
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
   });
 
-  // Smooth spring physics for a "liquid" feel
-  const smoothProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
+  // Intensified spring physics for a "high-end" reactive feel
+  const smoothProgress = useSpring(scrollYProgress, { stiffness: 120, damping: 20 });
 
-  // Modern parallax transforms
-  const opacity = useTransform(smoothProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-  const scale = useTransform(smoothProgress, [0, 0.2], [0.8, 1]);
-  const yMove = useTransform(smoothProgress, [0, 1], [100, -100]);
-  
-  // Background text parallax
-  const xBg = useTransform(smoothProgress, [0, 1], [100, -200]);
+  // Animations linked to scroll
+  const opacity = useTransform(smoothProgress, [0, 0.3, 0.8, 1], [0, 1, 1, 0]);
+  const scale = useTransform(smoothProgress, [0, 0.3], [0.9, 1]);
+  const yContent = useTransform(smoothProgress, [0, 1], [50, -50]);
+  const xMeText = useTransform(smoothProgress, [0, 1], [100, -150]);
 
   useEffect(() => {
     AOS.init({ duration: 1000, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', once: false });
@@ -155,53 +152,53 @@ export default function HireMeSection() {
   return (
     <section 
       ref={sectionRef} 
-      className="relative w-full min-h-screen bg-[#FCF9F9] font-['Poppins'] flex items-center py-20 overflow-hidden z-10"
+      // Force the background color to prevent overrides
+      className="relative w-full min-h-screen !bg-[#FCF9F9] font-['Poppins'] flex items-center py-20 overflow-hidden z-10"
     >
-      {/* Parallax Background "Me" */}
+      {/* Parallax Background "Me" - Visible only on Desktop */}
       <motion.div 
-        style={{ x: xBg }} 
+        style={{ x: xMeText }} 
         className="absolute top-1/2 right-0 -translate-y-1/2 opacity-[0.03] select-none z-0 pointer-events-none hidden lg:block"
       >
-        <h2 className="text-[25vw] font-bold text-[#b4647d] font-['Playfair_Display'] italic leading-none">
+        <h2 className="text-[22vw] font-bold text-[#b4647d] font-['Playfair_Display'] italic leading-none">
           Me
         </h2>
       </motion.div>
 
       <motion.div 
-        style={{ opacity, scale }}
-        className="relative z-10 w-full max-w-7xl mx-auto px-8 md:px-16"
+        style={{ opacity, scale, y: yContent }}
+        className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-16"
       >
-        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-16">
+        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12">
           
-          {/* Left Side: The Main Highlight */}
+          {/* Highlighted Left Side */}
           <div className="w-full lg:w-[60%] text-center lg:text-left">
-            <header className="mb-12">
+            <header className="mb-10">
               <motion.span 
-                initial={{ letterSpacing: "0.2em", opacity: 0 }}
-                whileInView={{ letterSpacing: "0.5em", opacity: 1 }}
-                transition={{ duration: 1 }}
-                className="text-[10px] text-[#b4647d] uppercase font-bold block mb-6"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                className="text-[10px] tracking-[0.6em] text-[#b4647d] uppercase font-bold block mb-4"
               >
                 Collaboration
               </motion.span>
-              <h2 className="text-7xl md:text-9xl font-normal text-[#334155] leading-[0.9] font-['Playfair_Display'] tracking-tight">
+              <h2 className="text-6xl md:text-8xl lg:text-9xl font-normal text-[#334155] leading-[0.85] font-['Playfair_Display']">
                 Hire <span className="text-[#b4647d] italic">Me</span>
               </h2>
             </header>
 
-            {/* Refined Square Grid */}
+            {/* Architectural Square Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {reasons.map((item, index) => (
                 <motion.div 
                   key={index}
-                  whileHover={{ scale: 1.02, backgroundColor: "#FFF" }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  className="flex flex-col p-8 bg-gradient-to-br from-[#FDEFF4] to-[#F3E7EB] rounded-sm border border-[#EEDDE2] shadow-[0_10px_30px_rgba(0,0,0,0.02)] text-left group"
+                  whileHover={{ y: -8, backgroundColor: "#ffffff" }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="flex flex-col p-8 bg-gradient-to-br from-[#FDEFF4] to-[#F3E7EB] rounded-none border border-[#EEDDE2] shadow-[0_15px_40px_rgba(0,0,0,0.02)] text-left group"
                 >
-                  <h3 className="text-2xl font-normal text-[#334155] font-['Playfair_Display'] mb-4 group-hover:text-[#b4647d] transition-colors">
+                  <h3 className="text-2xl font-normal text-[#334155] font-['Playfair_Display'] mb-3 group-hover:text-[#b4647d] transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-[#576577] leading-relaxed opacity-70 font-light">
+                  <p className="text-[11px] text-[#576577] leading-relaxed opacity-70 font-light">
                     {item.desc}
                   </p>
                 </motion.div>
@@ -209,24 +206,23 @@ export default function HireMeSection() {
             </div>
           </div>
 
-          {/* Right Side: Image only visible on Desktop */}
+          {/* Portrait: Hidden on mobile/tablet to focus on content */}
           <div className="hidden lg:flex w-[35%] relative items-center justify-center">
-            {/* Parallax Floating Image */}
-            <motion.div style={{ y: yMove }} className="relative">
-              <div className="absolute -top-10 -right-10 bg-[#b4647d] py-6 px-10 shadow-2xl rounded-sm rounded-tr-[3rem] z-20">
-                <span className="text-[10px] font-bold tracking-widest text-pink-100 uppercase block mb-1">Result Driven</span>
-                <h4 className="text-lg text-white">Full-Time</h4>
+            <motion.div style={{ y: useTransform(smoothProgress, [0, 1], [80, -80]) }}>
+              <div className="absolute -top-6 -right-6 bg-[#b4647d] py-5 px-8 shadow-2xl rounded-none rounded-tr-[3rem] z-20">
+                <span className="text-[9px] font-bold tracking-widest text-pink-100 uppercase block mb-1">Result Driven</span>
+                <h4 className="text-base text-white">Full-Time</h4>
               </div>
 
               <img 
                 src="/img4-nobg.png" 
-                className="h-[600px] w-auto object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.12)]" 
+                className="h-[600px] w-auto object-contain drop-shadow-[0_40px_80px_rgba(0,0,0,0.1)]" 
                 alt="Portrait" 
               />
 
-              <div className="absolute -bottom-10 -left-10 bg-white py-6 px-10 shadow-2xl rounded-sm border-r-[12px] border-[#b4647d] z-20">
-                <span className="text-[10px] font-bold tracking-widest text-[#b4647d] uppercase block mb-1">Location</span>
-                <h4 className="text-lg text-[#1e293b]">Remote / Hybrid</h4>
+              <div className="absolute -bottom-6 -left-6 bg-white py-5 px-8 shadow-2xl rounded-none border-r-[10px] border-[#b4647d] z-20">
+                <span className="text-[9px] font-bold tracking-widest text-[#b4647d] uppercase block mb-1">Location</span>
+                <h4 className="text-base text-[#1e293b]">Remote / Hybrid</h4>
               </div>
             </motion.div>
           </div>
