@@ -32,13 +32,10 @@ export default function HireMeSection() {
   }, []);
 
   return (
-    /* Outer container controls the scroll length of the stacking animation zone */
     <div ref={scrollTrackRef} className="relative h-[300vh] bg-[#fff5f8]">
       
-      {/* Sticky viewport frame: Locks content on screen during stacking */}
       <div className="sticky top-0 h-screen w-full flex flex-col justify-between pt-16 pb-24 overflow-hidden">
         
-        {/* 1. VISUAL HEADER */}
         <div className="w-full text-center select-none z-10">
           <p className="text-[10px] tracking-[1em] text-[#b4647d] font-bold uppercase mb-2 opacity-60">
             Process
@@ -48,8 +45,7 @@ export default function HireMeSection() {
           </h2>
         </div>
 
-        {/* 2. SPECIFIC SPOT FOR THE CARD STACKING */}
-        {/* Isolated via flexible spacing container to guarantee breathing room below it */}
+       
         <div className="w-full h-[350px] my-auto flex items-center justify-center relative [perspective:1500px] z-20">
           {steps.map((step, i) => {
             const distance = i - scrollProgress;
@@ -59,21 +55,17 @@ export default function HireMeSection() {
             let rotateX = 0;
             let opacity = 1;
 
-            // Strict animation tracking thresholds
             if (distance > 0.1) {
-              // Waiting cards: layered flat beneath without shifting prematurely
               const stackFactor = Math.min(distance, 1);
               translateY = stackFactor * 8; 
               translateZ = stackFactor * -20; 
               opacity = Math.max(0, 1 - distance * 0.35);
             } else if (distance < -0.1) {
-              // Active card moving away: flies upward out of view
               translateY = distance * 260; 
               translateZ = Math.abs(distance) * 150; 
               rotateX = distance * 35; 
               opacity = Math.max(0, 1 + distance * 2.5); 
             } else {
-              // Sweet Spot: Rest completely flat and pristine when full card is viewed
               translateY = 0;
               translateZ = 0;
               rotateX = 0;
@@ -92,7 +84,6 @@ export default function HireMeSection() {
                   visibility: Math.abs(distance) > 1.2 ? 'hidden' : 'visible'
                 }}
               >
-                {/* Card Top */}
                 <div className="flex justify-between items-center">
                   <span className="text-[10px] font-black tracking-[0.3em] text-white/60 uppercase">
                     {step.tag}
@@ -100,7 +91,6 @@ export default function HireMeSection() {
                   <span className="text-white/80 text-xl font-serif">✦✦</span>
                 </div>
 
-                {/* Card Center */}
                 <div className="text-center flex flex-col items-center w-full">
                   <span className="text-2xl font-['Playfair_Display'] text-white/90 italic mb-1">
                     {step.id}
@@ -109,7 +99,6 @@ export default function HireMeSection() {
                     {step.title}
                   </h3>
                   
-                  {/* Dotted Lines Layout */}
                   <div className="w-full space-y-2 opacity-30 px-4">
                     <div className="w-full border-b border-dotted border-white/70" />
                     <div className="w-full border-b border-dotted border-white/70" />
@@ -117,7 +106,6 @@ export default function HireMeSection() {
                   </div>
                 </div>
 
-                {/* Card Bottom */}
                 <div className="flex justify-between items-center text-[9px] font-black tracking-[0.4em] text-white/50 uppercase">
                   <span>Phase // HireMe</span>
                   <span>{step.tag}</span>
@@ -127,8 +115,7 @@ export default function HireMeSection() {
           })}
         </div>
 
-        {/* 3. LOWER SPACING BUFFER */}
-        {/* Replaces the missing ticker block to preserve clean layout padding at the bottom */}
+        
         <div className="w-full h-8 pointer-events-none select-none" />
 
       </div>
