@@ -112,7 +112,6 @@ export default function HireMeSection() {
 
   const handleScroll = (e) => {
     const { scrollTop, clientHeight } = e.target;
-    // Normalized scroll value based on viewport height
     setScrollProgress(scrollTop / clientHeight);
   };
 
@@ -123,7 +122,7 @@ export default function HireMeSection() {
         ref={containerRef}
         onScroll={handleScroll}
         className="absolute inset-0 overflow-y-auto snap-y snap-mandatory z-50 pointer-events-auto"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }} // Hides scrollbar
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {steps.map((_, i) => (
           <div key={i} className="w-full h-screen snap-start" />
@@ -131,10 +130,10 @@ export default function HireMeSection() {
       </div>
 
       {/* Visual Content Layer */}
-      <div className="absolute inset-0 flex flex-col justify-between pt-16 pb-12 pointer-events-none z-10">
+      <div className="absolute inset-0 flex flex-col pt-20 pb-16 pointer-events-none z-10">
         
         {/* Fixed Header */}
-        <div className="w-full text-center">
+        <div className="w-full text-center mb-16"> {/* Increased bottom margin for explicit breathing room */}
           <p className="text-[10px] tracking-[1em] text-[#b4647d] font-bold uppercase mb-2 opacity-60">
             Process
           </p>
@@ -144,40 +143,49 @@ export default function HireMeSection() {
         </div>
 
         {/* Card Viewport Area */}
-        <div className="w-full h-[450px] flex items-center justify-center relative overflow-visible [perspective:1500px]">
+        <div className="w-full flex-1 flex items-start justify-center relative overflow-visible [perspective:1500px]">
           {steps.map((step, i) => {
             // How far this specific card is from being perfectly in focus
             const distance = i - scrollProgress;
             
-            // Adjust card stack: Cards below/ahead sit at center, active/past cards pop out
             let translateY = 0;
             let translateZ = 0;
             let rotateX = 0;
             let opacity = 1;
 
-            if (distance > 0) {
-              // Cards waiting in the stack underneath
-              translateY = distance * 8; // Gentle compression stack
-              translateZ = distance * -15; // Placed slightly backward in 3D space
+            // NEW MATH: Delays the onset of stacking or flying away
+            // The card remains flat and fully visible until it transitions past center thresholds
+            if (distance > 0.1) {
+              // Cards sitting flat at the bottom waiting their turn
+              // They only compress into a neat stack when the active card moves away
+              const stackFactor = Math.min(distance, 1);
+              translateY = stackFactor * 12; 
+              translateZ = stackFactor * -20; 
               opacity = Math.max(0, 1 - distance * 0.4);
+            } else if (distance < -0.1) {
+              // Active card flies upward and away only after passing the active zone
+              translateY = distance * 220; 
+              translateZ = Math.abs(distance) * 120; 
+              rotateX = distance * 30; 
+              opacity = Math.max(0, 1 + distance * 1.8); 
             } else {
-              // Active card moving out / flying up over the top
-              translateY = distance * 180; // Fly upwards away from the center
-              translateZ = Math.abs(distance) * 80; // Pop closer to camera while flying out
-              rotateX = distance * 25; // Gentle rotation back
-              opacity = Math.max(0, 1 + distance * 1.5); // Fades fast out of view
+              // CARD IS FULLY VISIBLE & CENTERED: Neutralizes transformations in the sweet spot
+              translateY = 0;
+              translateZ = 0;
+              rotateX = 0;
+              opacity = 1;
             }
 
             return (
               <div 
                 key={step.id} 
-                className="absolute w-[540px] h-[350px] rounded-[2.5rem] bg-[#b4647d] border border-white/20 p-10 shadow-2xl flex flex-col justify-between transition-all duration-75 ease-out"
+                className="absolute w-[540px] h-[350px] rounded-[2.5rem] bg-[#b4647d] border border-white/20 p-10 shadow-2xl flex flex-col justify-between transition-all duration-100 ease-out"
                 style={{
                   transform: `translateY(${translateY}px) translateZ(${translateZ}px) rotateX(${rotateX}deg)`,
                   opacity: opacity,
-                  zIndex: Math.round(100 - i), // Ensures cards stack strictly top-to-bottom
+                  zIndex: Math.round(100 - i), 
                   transformStyle: 'preserve-3d',
-                  visibility: Math.abs(distance) > 2 ? 'hidden' : 'visible'
+                  visibility: Math.abs(distance) > 1.8 ? 'hidden' : 'visible'
                 }}
               >
                 {/* Card Top */}
@@ -197,7 +205,7 @@ export default function HireMeSection() {
                     {step.title}
                   </h3>
                   
-                  {/* Dotted lines aligned precisely with your reference layout */}
+                  {/* Dotted lines */}
                   <div className="w-full space-y-2 opacity-30 px-4">
                     <div className="w-full border-b border-dotted border-white/70" />
                     <div className="w-full border-b border-dotted border-white/70" />
@@ -214,9 +222,6 @@ export default function HireMeSection() {
             );
           })}
         </div>
-
-        {/* Empty Spacer to help push the card viewport perfectly into the upper-middle region */}
-        <div className="h-4" />
       </div>
     </section>
   );
