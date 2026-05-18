@@ -15,8 +15,8 @@ function App() {
 
   return (
     <div>
-      <CustomCursor/>
       <ScrollToTop />
+      <CustomCursor/>
       <AppRoutes />
     </div>
   );
