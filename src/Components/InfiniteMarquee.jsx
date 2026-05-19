@@ -38,13 +38,7 @@ export default function ExperienceSection() {
       </div>
 
       <Swiper
-       data-aos="fade-down"
-        data-aos-offset="50"
-        data-aos-delay="50"
-        data-aos-duration="600"
-        data-aos-easing="ease-in"
-        data-aos-mirror="true"
-        data-aos-once="false"
+       
         slidesPerView={1.4}
         spaceBetween={40}
         loop={true}
