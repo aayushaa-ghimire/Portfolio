@@ -20,7 +20,15 @@ const projects = [
 export default function ExperienceSection() {
   return (
     <section className="project-carousel-viewport ">
-      <div className="section-header">
+      <div
+       data-aos="fade-down"
+        data-aos-offset="50"
+        data-aos-delay="100"
+        data-aos-duration="600"
+        data-aos-easing="ease-in"
+        data-aos-mirror="true"
+        data-aos-once="false"
+       className="section-header">
 <span className="font-['Poppins'] text-[10px] tracking-[0.6em] uppercase text-[#334155] font-bold opacity-60">
           My Projects
         </span>
@@ -30,6 +38,13 @@ export default function ExperienceSection() {
       </div>
 
       <Swiper
+       data-aos="fade-down"
+        data-aos-offset="50"
+        data-aos-delay="50"
+        data-aos-duration="600"
+        data-aos-easing="ease-in"
+        data-aos-mirror="true"
+        data-aos-once="false"
         slidesPerView={1.4}
         spaceBetween={40}
         loop={true}

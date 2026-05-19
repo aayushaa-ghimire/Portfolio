@@ -20,12 +20,13 @@ export default function ExperienceSection() {
     <section className="w-full bg-[#fce4ec] py-20  ">
       <header 
       data-aos="fade"
-        data-aos-offset="100"
-        data-aos-delay="50"
-        data-aos-duration="800"
+        data-aos-offset="50"
+        data-aos-delay="100"
+        data-aos-duration="600"
         data-aos-easing="ease-in"
         data-aos-mirror="true"
-        data-aos-once="false" className="text-center mb-10">
+        data-aos-once="false"
+        className="text-center mb-10">
         <span className="font-['Poppins'] text-[10px] tracking-[0.6em] uppercase text-[#334155] font-bold opacity-60">
           My Experience
         </span>
@@ -34,8 +35,8 @@ export default function ExperienceSection() {
 
       <div 
         data-aos="fade-up"
-        data-aos-offset="50"
-        data-aos-delay="5"
+        data-aos-offset="10"
+        data-aos-delay="0"
         data-aos-duration="600"
         data-aos-easing="ease-in"
         data-aos-mirror="true"
