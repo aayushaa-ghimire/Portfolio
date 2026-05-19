@@ -44,9 +44,9 @@ function AboutMe() {
 
         <div
           data-aos="fade-left"
-          data-aos-offset="50"
-          data-aos-delay="80"
-          data-aos-duration="800"
+          data-aos-offset="80"
+          data-aos-delay="90"
+          data-aos-duration="1000"
           className="col-span-12 lg:col-span-7 text-center lg:text-right flex flex-col items-center lg:items-end"
         >
           <div className="flex flex-col items-center lg:items-end">
