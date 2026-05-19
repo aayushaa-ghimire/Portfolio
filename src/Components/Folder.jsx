@@ -1,6 +1,3 @@
-
-
-
 import { useState } from 'react';
 
 const darkenColor = (hex, percent) => {
@@ -43,9 +40,9 @@ const Folder = ({ color = '#b4647d', size = 1, items = [], className = '' }) => 
 
   const getOpenTransform = index => {
     // Adjusted Y-axis values to keep cards lower and closer to folder body
-    if (index === 0) return 'translate(-110%, -20%) rotate(-12deg)';
-    if (index === 1) return 'translate(10%, -20%) rotate(12deg)';
-    if (index === 2) return 'translate(-50%, -40%) rotate(0deg)';
+    if (index === 0) return 'translate(-110%, -10%) rotate(-16deg)';
+    if (index === 1) return 'translate(10%, -10%) rotate(16deg)';
+    if (index === 2) return 'translate(-50%, -28%) rotate(0deg)';
     return '';
   };
 
@@ -109,6 +106,7 @@ const Folder = ({ color = '#b4647d', size = 1, items = [], className = '' }) => 
               transform: open ? 'skewX(18deg) scaleY(0.35)' : 'none'
             }}
           />
+      
           {/* Front Flap - Right Skew */}
           <div
             className="absolute inset-0 z-30 transition-all duration-700 origin-bottom"
@@ -118,8 +116,11 @@ const Folder = ({ color = '#b4647d', size = 1, items = [], className = '' }) => 
               transform: open ? 'skewX(-18deg) scaleY(0.35)' : 'none'
             }}
           />
+          
         </div>
-      </div>
+<span className="font-['Poppins']  p-3 flex text-center items-center text-[5px] tracking-[0.6em] uppercase text-[#3341557d] font-bold opacity-60">
+          Click to open
+        </span>      </div>
     </div>
   );
 };

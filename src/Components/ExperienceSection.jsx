@@ -18,7 +18,14 @@ const experiences = [
 export default function ExperienceSection() {
   return (
     <section className="w-full bg-[#fce4ec] py-20  ">
-      <header className="text-center mb-10">
+      <header 
+      data-aos="fade"
+        data-aos-offset="100"
+        data-aos-delay="50"
+        data-aos-duration="800"
+        data-aos-easing="ease-in"
+        data-aos-mirror="true"
+        data-aos-once="false" className="text-center mb-10">
         <span className="font-['Poppins'] text-[10px] tracking-[0.6em] uppercase text-[#334155] font-bold opacity-60">
           My Experience
         </span>
@@ -26,7 +33,15 @@ export default function ExperienceSection() {
       </header>
 
       {/* Added mt-24 to provide space for the popping-up cards */}
-      <div className="flex flex-col md:flex-row items-center md:items-start justify-center md:justify-start  gap-12 mt-15 lg:mt-30 lg:mb-12 px-0 ">
+      <div 
+        data-aos="fade-up"
+        data-aos-offset="50"
+        data-aos-delay="5"
+        data-aos-duration="600"
+        data-aos-easing="ease-in"
+        data-aos-mirror="true"
+        data-aos-once="false"
+        className="flex flex-col md:flex-row items-center md:items-start justify-center md:justify-start  gap-12 mt-15 lg:mt-40 lg:mb-15 px-0 ">
         
         
       <div className="flex flex-row gap-12">
@@ -63,7 +78,7 @@ export default function ExperienceSection() {
           href="/resume.pdf" 
           download
           whileHover={{ scale: 1.05, backgroundColor: "#b4647d", color: "#ffffff" }}
-          className="flex items-center justify-center  text-[8px] uppercase tracking-[0.2em] text-[#b4647d] border border-[#b4647d]/30 px-6 py-3 lg:ml-25 rounded-full bg-white/40 backdrop-blur-md transition-colors"
+          className="flex items-center justify-center  text-[8px] uppercase tracking-[0.2em] text-[#b4647d] border border-[#b4647d]/30 px-6 py-3 lg:ml-30 rounded-full bg-white/40 backdrop-blur-md transition-colors"
         >
           Download My Resume <span className="ml-2">→</span>
         </motion.a>
