@@ -30,10 +30,10 @@ export default function ExperienceSection() {
       </div>
 
       <Swiper
-        slidesPerView={1.5}
-        spaceBetween={30}
+        slidesPerView={1.4}
+        spaceBetween={40}
         loop={true}
-        speed={10000} 
+        speed={6666} 
         freeMode={{
           enabled: true,
           momentum: false,

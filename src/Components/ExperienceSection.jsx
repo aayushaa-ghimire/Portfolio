@@ -32,7 +32,6 @@ export default function ExperienceSection() {
         <h2 className="font-['Playfair_Display'] text-[#b4647d] text-5xl font-medium mt-2">Experience</h2>
       </header>
 
-      {/* Added mt-24 to provide space for the popping-up cards */}
       <div 
         data-aos="fade-up"
         data-aos-offset="50"
