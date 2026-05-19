@@ -7,8 +7,8 @@ import InfiniteMarquee from '../Components/InfiniteMarquee';
 import ReverseSkillsMarquee from '../Components/ReverseSkillsMarquee';
 import SkillsMarquee from '../Components/SkillsMarquee';
 import ParallaxCutout from '../Components/ParallaxCutout';
-import HireMeSection from '../Components/HireMeSection';
 import ContactSection from '../Components/ContactSection';
+import HireMe from '../Components/HireMe';
 
 function Home() {
   return (
@@ -18,11 +18,11 @@ function Home() {
       <ReverseSkillsMarquee />
       <AboutMe />
       <SkillsSection />
-      {/* <ExperienceSection /> */}<ParallaxCutout />
+      <ParallaxCutout />
       <InfiniteMarquee />
-      {/* <ParallaxCutout /> */}<ExperienceSection />
+      <ExperienceSection />
       <SkillsMarquee className="pb-20" />
-      <HireMeSection />
+      <HireMe />
       <ReverseSkillsMarquee />
       <ContactSection />
 
