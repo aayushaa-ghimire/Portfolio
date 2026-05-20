@@ -19,7 +19,7 @@ function AboutMe() {
         <div
           data-aos="fade-up"
           data-aos-offset="5"
-          data-aos-delay="30"
+          data-aos-delay="40"
           data-aos-duration="1000"
           className="col-span-12 lg:col-span-5 flex items-center justify-center relative"
         >
@@ -45,7 +45,7 @@ function AboutMe() {
         <div
           data-aos="fade-left"
           data-aos-offset="80"
-          data-aos-delay="90"
+          data-aos-delay="100"
           data-aos-duration="1000"
           className="col-span-12 lg:col-span-7 text-center lg:text-right flex flex-col items-center lg:items-end"
         >
