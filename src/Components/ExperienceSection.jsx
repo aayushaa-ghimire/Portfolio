@@ -19,10 +19,10 @@ export default function ExperienceSection() {
   return (
     <section className="w-full bg-[#fce4ec] py-20  ">
       <header 
-      data-aos="fade"
+      data-aos="fade-down"
         data-aos-offset="50"
         data-aos-delay="100"
-        data-aos-duration="600"
+        data-aos-duration="800"
         data-aos-easing="ease-in"
         data-aos-mirror="true"
         data-aos-once="false"
