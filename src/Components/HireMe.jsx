@@ -1,44 +1,42 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { Cpu, Layout, Zap, Workflow } from 'lucide-react';
 import NewMarquee from './NewMarquee';
 import NewReverseMarquee from './NewReverseMarquee';
 
 const offerings = [
-  { title: "Production Frontend", description: "Lightning-fast, optimized, and built for high retention." },
-  { title: "Pixel-Perfect UI", description: "Flawless translation of Figma designs into high-fidelity code." },
-  { title: "Performance Tuning", description: "Strategic code-splitting and top-tier Core Web Vitals." },
-  { title: "Scalable Workflow", description: "Modular, self-documenting code built for long-term growth." }
+  { title: "Production Frontend", description: "Lightning-fast, optimized for high retention.", icon: <Cpu size={24} /> },
+  { title: "Pixel-Perfect UI", description: "Flawless Figma to high-fidelity code.", icon: <Layout size={24} /> },
+  { title: "Performance Tuning", description: "Strategic code-splitting & Core Web Vitals.", icon: <Zap size={24} /> },
+  { title: "Scalable Workflow", description: "Modular code built for future growth.", icon: <Workflow size={24} /> }
 ];
 
 export default function HireMe() {
   return (
-    <div className="bg-[#FFF5F8]">
+<div style={{ backgroundColor: '#FFF5F8' }} className="w-full min-h-screen">
       <NewMarquee />
 
-      <section className="px-6 md:px-20 lg:px-32 py-10 flex justify-center">
-        <div className="max-w-6xl flex flex-col md:flex-row items-center gap-12">
+      <section className="px-6 md:px-20 lg:px-32 py-16 flex justify-center">
+        <div className="max-w-5xl w-full flex flex-col md:flex-row items-center gap-16">
           
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            className="w-full md:w-4/12"
-          >
-            <span className="text-[9px] tracking-[0.4em] uppercase text-[#b4647d]/60 font-semibold">Qualities</span>
-            <h2 className="text-3xl font-serif text-[#334155] mt-1">What I Offer</h2>
-          </motion.div>
+          <div className="w-full md:w-4/12">
+            <span className="text-[10px] tracking-[0.3em] uppercase text-[#b4647d] font-bold">Qualities</span>
+            <h2 className="text-4xl font-serif text-[#334155] mt-2">What I Offer</h2>
+          </div>
 
-          <div className="w-full md:w-8/12 grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="w-full md:w-8/12 grid grid-cols-2 gap-4">
             {offerings.map((item, index) => (
-              <motion.div 
+              <div 
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white/40 border border-[#b4647d]/10 p-5 rounded-2xl hover:bg-white/60 transition-colors"
+                // flex flex-col items-center centers everything inside the card
+                className="group flex flex-col items-center text-center bg-white p-8 border border-[#b4647d]/10 rounded-xl transition-all duration-300 hover:shadow-[0_20px_30px_-10px_rgba(180,100,125,0.15)] hover:-translate-y-1"
               >
-                <h3 className="text-sm font-serif text-[#b4647d] mb-1">{item.title}</h3>
-                <p className="text-[11px] text-[#334155]/70 leading-relaxed">{item.description}</p>
-              </motion.div>
+                {/* Centered Icon */}
+                <div className="mb-4 text-[#b4647d] transition-transform duration-300 group-hover:scale-110">
+                  {item.icon}
+                </div>
+                <h3 className="text-sm font-serif text-[#334155] mb-2">{item.title}</h3>
+                <p className="text-[11px] text-[#334155]/60 leading-relaxed max-w-[180px]">{item.description}</p>
+              </div>
             ))}
           </div>
         </div>
