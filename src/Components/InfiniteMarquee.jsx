@@ -45,6 +45,13 @@ const projects = [
     image: "/calculator.png",
     link: "https://calculator-ten-umber-83.vercel.app/" 
   },
+  {
+    id: "7",
+    title: "Memory Game",
+    image: "/memory-card.png",
+    link: "https://memory-game-silk-six.vercel.app/"
+  },
+  
 ];
 
 export default function ExperienceSection() {
