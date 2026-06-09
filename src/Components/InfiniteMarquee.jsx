@@ -9,12 +9,12 @@ import './InfiniteMarquee.css';
 import { Autoplay, FreeMode } from 'swiper/modules';
 
 const projects = [
-  { id: "1", title: "Project One", link: "View Project" },
-  { id: "2", title: "Project Two", link: "View Project" },
-  { id: "3", title: "Project Three", link: "View Project" },
-  { id: "4", title: "Project Four", link: "View Project" },
-  { id: "5", title: "Project Five", link: "View Project" },
-  { id: "6", title: "Project Six", link: "View Project" },
+  { id: "1", title: "Age Calculator", link: "https://age-calculator-gamma-orcin.vercel.app/" },
+  { id: "2", title: "Number Guessing Game", link: "https://number-guessing-game-zeta-amber.vercel.app/" },
+  { id: "3", title: "Rock Paper Scissor", link: "https://rock-paper-scissor-beta-five-26.vercel.app/" },
+  { id: "4", title: "To Do List", link: "https://to-do-list-ipba.vercel.app/" },
+  { id: "5", title: "A Sample UI", link: "https://vividify.vercel.app/" },
+  { id: "6", title: "Calculator", link: "https://calculator-ten-umber-83.vercel.app/" },
 ];
 
 export default function ExperienceSection() {
@@ -83,7 +83,7 @@ export default function ExperienceSection() {
               </div>
 
               <div className="card-footer">
-                <a href="#" className="project-link">{proj.link}</a>
+                <a href={proj.link} className="project-link">Click Here</a>
               </div>
             </div>
           </SwiperSlide>
