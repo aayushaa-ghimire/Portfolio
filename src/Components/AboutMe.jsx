@@ -8,7 +8,7 @@ function AboutMe() {
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen bg-[#fce4ec] py-16 px-6 flex items-center overflow-hidden">
+    <section className="relative w-full min-h-screen bg-[#fce4ec] py-30 px-6 flex items-center">
       
       <div className="absolute top-10 left-[-5%] opacity-5 select-none z-0 pointer-events-none">
         <h2 className="text-[10rem] md:text-[20rem] font-bold text-[#b4647d] italic leading-none" style={{ fontFamily: "'Playfair Display', serif" }}>Hi</h2>
@@ -58,13 +58,13 @@ function AboutMe() {
             
             <p className="max-w-md md:max-w-lg text-[#334155]/80 text-sm md:text-md leading-[1.8] font-medium tracking-wide mb-8">
               I approach frontend architecture like an architect. By combining UI/UX design with a 
-              desktop-first philosophy, I build high-end agency experiences.
+              mobile-first philosophy, I build high-end agency experiences.
             </p>
           </div>
           
           <div className="flex items-center gap-6">
             <div className="text-right">
-              <p className="text-[9px] text-[#b4647d] font-bold uppercase">Frontend Lead</p>
+              <p className="text-[9px] text-[#b4647d] font-bold uppercase">Frontend Developer</p>
               <p className="text-[10px] text-slate-400 font-medium uppercase">UI/UX Designer</p>
             </div>
             <div className="h-[1px] w-16 bg-[#334155] hidden sm:block" />

@@ -203,7 +203,7 @@ export default function ContactSection() {
             </span>
             <div className="h-[1px] w-4 bg-[#b4647d]/20" />
           </div>
-          <h2 className="text-5xl md:text-6xl font-normal text-[#334155] leading-none font-['Playfair_Display']">
+          <h2 className="text-4xl md:text-5xl font-normal text-[#334155] leading-none font-['Playfair_Display']">
            Contact <span className="text-[#b4647d] ">Me.</span>
           </h2>
         </div>
