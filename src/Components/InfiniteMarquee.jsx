@@ -59,8 +59,17 @@ export default function ExperienceSection() {
         className="mySwiper"
         >
         {projects.map((proj) => (
-          <SwiperSlide key={proj.id}>
-            <div className="project-slide-card">
+          <SwiperSlide key={proj.id}
+          >
+            <div 
+            data-aos="fade-up"
+        data-aos-offset="5"
+        data-aos-delay="100"
+        data-aos-duration="500"
+        data-aos-easing="ease-in"
+        data-aos-mirror="true"
+        data-aos-once="false"
+             className="project-slide-card">
               <div className="card-top-content">
                 <h3 className="proj-display-title">{proj.title}</h3>
               </div>

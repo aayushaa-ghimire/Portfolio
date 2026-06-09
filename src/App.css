@@ -12,16 +12,13 @@ html, body {
   overflow-x: hidden;
   font-family: 'Poppins', sans-serif;
   width: 100%;
-  /* Use !important to override any library defaults */
   cursor: none !important;
 }
 
-/* Ensure all interactive elements also hide the default cursor */
 a, button, input, textarea, [role="button"], .group {
   cursor: none !important;
 }
 
-/* Global Cursor Canvas Fix */
 #cursor-canvas {
   position: fixed;
   top: 0;
@@ -32,7 +29,6 @@ a, button, input, textarea, [role="button"], .group {
   z-index: 999999; /* Higher than any other layer */
 }
 
-/* Rest of your existing layer styles... */
 .hero-viewport {
   position: relative;
   width: 100%;
