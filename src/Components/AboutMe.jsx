@@ -31,7 +31,7 @@ function AboutMe() {
             </div>
           </div>
 
-          <img src="/img3-nobg.png" className="h-[40vh] sm:h-[50vh] lg:h-auto lg:max-h-[70vh] w-auto object-contain drop-shadow-2xl" alt="Portrait" />
+          <img src="/img4-nobg.png" className="h-[40vh] sm:h-[50vh] lg:h-auto lg:max-h-[70vh] w-auto object-contain drop-shadow-2xl" alt="Portrait" />
 
           {/*  Badge 2 */}
           <div className="absolute bottom-[5%] sm:bottom-[10%] right-2 sm:right-0 z-[60] scale-[0.6] sm:scale-90 md:scale-100 animate-[float_4s_ease-in-out_infinite_reverse]">

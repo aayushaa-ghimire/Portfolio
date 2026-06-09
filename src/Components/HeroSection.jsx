@@ -1,7 +1,4 @@
-
 import React, { useEffect, useState } from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 
 function HeroSection() {
   const [scrollY, setScrollY] = useState(0);
@@ -11,12 +8,6 @@ function HeroSection() {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     handleResize();
     window.addEventListener('resize', handleResize);
-
-    AOS.init({
-      duration: 1200,
-      once: false,
-      easing: 'cubic-bezier(0.19, 1, 0.22, 1)',
-    });
 
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
