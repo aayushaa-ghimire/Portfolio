@@ -8,7 +8,7 @@ function AboutMe() {
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen bg-[#FFF5F8] py-16 px-6 flex items-center overflow-hidden">
+    <section className="relative w-full min-h-screen bg-[#fce4ec] py-16 px-6 flex items-center overflow-hidden">
       
       <div className="absolute top-10 left-[-5%] opacity-5 select-none z-0 pointer-events-none">
         <h2 className="text-[10rem] md:text-[20rem] font-bold text-[#b4647d] italic leading-none" style={{ fontFamily: "'Playfair Display', serif" }}>Hi</h2>
