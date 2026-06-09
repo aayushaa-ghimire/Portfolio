@@ -104,20 +104,26 @@ export default function ExperienceSection() {
                 <h3 className="proj-display-title">{proj.title}</h3>
               </div>
 
-              <div className="image-wrapper">
+              {/* Wrapped image layout container in external anchor link tag */}
+              <a 
+                href={proj.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="image-wrapper block cursor-pointer"
+              >
                 <img 
                   src={proj.image} 
                   alt={proj.title} 
-                  className="card-image"
+                  className="card-image w-full h-full object-cover"
                 />
-              </div>
+              </a>
 
               <div className="card-footer">
                 <a 
                   href={proj.link} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="project-link"
+                  className="project-link cursor-pointer"
                 >
                   Live Demo →
                 </a>
