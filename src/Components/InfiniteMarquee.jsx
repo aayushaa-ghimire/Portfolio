@@ -42,7 +42,7 @@ export default function ExperienceSection() {
         slidesPerView={1.4}
         spaceBetween={40}
         loop={true}
-        speed={6666} 
+        speed={6777} 
         freeMode={{
           enabled: true,
           momentum: false,

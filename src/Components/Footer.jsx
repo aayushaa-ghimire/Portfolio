@@ -28,11 +28,12 @@ export default function Footer() {
           <div className="flex flex-col space-y-5">
             <Link 
               to="/" 
-              className="text-xl font-bold text-[#334155] tracking-wide block font-['Poppins']"
+              className="text-xl flex justify-center font-bold text-[#b4647d] tracking-wide  font-['Poppins']"
             >
-              Aayusha
+              <img src="/Favicon1.png" alt="Aayusha" className="h-6 w-auto object-contain mx-auto md:mx-0" /> <span>ayusha</span>
+
             </Link>
-            <p className="text-[12px] tracking-widest uppercase text-[#334155]/60 leading-relaxed max-w-[260px] font-normal mx-auto md:mx-0 font-['Poppins']">
+            <p className="text-[12px] tracking-widest text-center uppercase text-[#334155]/60 leading-relaxed max-w-[260px] font-normal mx-auto md:mx-0 font-['Poppins']">
               Building thoughtful, high-fidelity web interfaces.
             </p>
           </div>

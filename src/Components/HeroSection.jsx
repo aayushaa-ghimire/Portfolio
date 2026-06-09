@@ -39,7 +39,7 @@ function HeroSection() {
             <p data-aos="fade-right" className="text-[10px] tracking-[0.6em] text-[#b4647d] uppercase font-semibold">
               Developer
             </p>
-            <h1 data-aos="fade-right" className="font-['Playfair_Display'] text-5xl md:text-7xl lg:text-8xl font-medium text-[#334155] leading-[0.85] tracking-tight">
+            <h1 data-aos="fade-right" className="font-['Playfair_Display'] text-5xl md:text-6xl lg:text-7xl font-medium text-[#334155] leading-[0.85] tracking-tight">
               Aayusha<br />
               <span className="text-[#b4647d]" style={softShadow}>Ghimire</span>
             </h1>

@@ -20,7 +20,7 @@ function AboutMe() {
           data-aos="fade-up"
           data-aos-offset="5"
           data-aos-delay="40"
-          data-aos-duration="1000"
+          data-aos-duration="1080"
           className="col-span-12 lg:col-span-5 flex items-center justify-center relative"
         >
           {/*  Badge 1 */}

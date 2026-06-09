@@ -157,9 +157,9 @@ const slugs = [
 ];
 
 const socialLinks = [
-  { Icon: FaGithub, href: "https://github.com/AayushaGhimire" },
+  { Icon: FaGithub, href: "https://github.com/aayushaa-ghimire" },
   { Icon: FaLinkedinIn, href: "https://linkedin.com/in/AayushaGhimire" },
-  { Icon: FaEnvelope, href: "mailto:hello@aayusha.com" },
+  { Icon: FaEnvelope, href: "mailto:ayushaghimireg@gmail.com" },
 ];
 
 function UnderlineField({ label, placeholder, type = "text", isTextarea = false }) {
@@ -188,14 +188,14 @@ export default function ContactSection() {
   }, []);
 
   return (
-    <section id="contact" className="relative w-full min-h-screen bg-[#fce4ec] flex items-center justify-center overflow-hidden py-20">
+    <section id="contact" className="relative w-full min-h-screen bg-[#fce4ec] flex items-center justify-center overflow-hidden py-30">
       
       <div className="absolute top-[-10%] left-[-5%] w-[30rem] h-[30rem] bg-white opacity-40 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[-10%] right-[-5%] w-[25rem] h-[25rem] bg-[#b4647d] opacity-10 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="relative z-10 w-full max-w-5xl px-6 md:px-8 flex flex-col items-center">
         
-        <div className="mb-12 text-center" data-aos="fade-down">
+        <div className="mb-20 text-center" data-aos="fade-down">
           <div className="flex items-center justify-center gap-2 mb-2">
             <div className="h-[1px] w-4 bg-[#b4647d]/20" />
             <span className="text-[8px] tracking-[0.6em] text-[#b4647d] uppercase font-normal font-['Poppins']">
@@ -203,7 +203,7 @@ export default function ContactSection() {
             </span>
             <div className="h-[1px] w-4 bg-[#b4647d]/20" />
           </div>
-          <h2 className="text-6xl md:text-7xl font-normal text-[#334155] leading-none font-['Playfair_Display']">
+          <h2 className="text-5xl md:text-6xl font-normal text-[#334155] leading-none font-['Playfair_Display']">
            Contact <span className="text-[#b4647d] ">Me.</span>
           </h2>
         </div>
@@ -212,11 +212,19 @@ export default function ContactSection() {
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 1 }}
-          className="w-full flex flex-col lg:flex-row items-stretch justify-center gap-8"
+          className="w-full flex flex-col lg:flex-row items-stretch justify-center pb-10 gap-10"
         >
           
           {/* LEFT Card (Form Section with UX Fixes) */}
-          <div className="w-full lg:w-[55%] flex">
+          <div
+           data-aos="fade-right"
+        data-aos-offset="5"
+        data-aos-delay="50"
+        data-aos-duration="800"
+        data-aos-easing="ease-in"
+        data-aos-mirror="true"
+        data-aos-once="false" 
+           className="w-full lg:w-[55%] flex">
             <div className="w-full bg-white/70 backdrop-blur-3xl p-8 md:p-12 rounded-[3.5rem] border border-white/80 shadow-[0_20px_50px_-15px_rgba(180,100,125,0.12)] flex flex-col justify-center relative overflow-hidden">
               <FaHeart className="absolute top-8 right-8 text-[#b4647d]/10" size={36} />
               
@@ -241,7 +249,15 @@ export default function ContactSection() {
           </div>
 
           {/* RIGHT Card */}
-          <div className="w-full lg:w-[38%] flex">
+          <div
+           data-aos="fade-left"
+        data-aos-offset="5"
+        data-aos-delay="50"
+        data-aos-duration="800"
+        data-aos-easing="ease-in"
+        data-aos-mirror="true"
+        data-aos-once="false" 
+           className="w-full lg:w-[38%] flex">
             <div className="w-full bg-white/50 backdrop-blur-3xl p-10 rounded-[3.5rem] border border-white shadow-[0_20px_60px_-15px_rgba(180,100,125,0.1)] flex flex-col items-center justify-between">
               
               <div className="relative flex w-full aspect-square max-w-[220px] items-center justify-center flex-grow">

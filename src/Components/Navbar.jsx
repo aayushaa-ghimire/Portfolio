@@ -44,10 +44,10 @@ function Navbar() {
           {/* LOGO - Greyish color remains */}
           <Link 
             to="/" 
-            className="text-xl font-semibold text-[#334155] tracking-tighter z-[110]"
+            className="text-xl flex font-semibold text-[#334155] tracking-tighter z-[110]"
             style={{ fontFamily: "'Poppins', sans-serif" }}
           >
-            Aayusha
+Aayusha
           </Link>
 
           {/* DESKTOP LINKS */}
