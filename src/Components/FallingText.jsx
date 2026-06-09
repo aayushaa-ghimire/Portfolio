@@ -11,10 +11,10 @@ function FallingText() {
   const [isStarted, setIsStarted] = useState(false);
   
   const skills = [
-    "React", "Java", "Tailwind v4", "Vite", "UI/UX", 
-    "Generics", "Reflection", "Web Dev", "IntelliJ", "VS Code",
-    "Figma", "CSS3", "HTML5", "JavaScript", "OOP", "Spring",
-    "PostgreSQL", "Git", "Animations", "Responsive", "Frontend"
+    "React", "Tailwind v4", "Vite", "UI/UX", 
+     "Web Dev",  "Vercel",
+    "CSS", "HTML", "JavaScript", 
+    "MySQL", "Git", "GitHub", "Animations", "Responsive", "Frontend"
   ];
 
   useEffect(() => {
