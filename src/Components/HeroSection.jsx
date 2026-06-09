@@ -18,6 +18,13 @@ function HeroSection() {
     };
   }, []);
 
+  const handleScrollToContact = () => {
+    const element = document.getElementById('contact');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   const leftMove = !isMobile ? { transform: `translateX(-${scrollY * 0.8}px)`, opacity: 1 - scrollY / 600 } : {};
   const rightMove = !isMobile ? { transform: `translateX(${scrollY * 0.8}px)`, opacity: 1 - scrollY / 600 } : {};
   const imgMove = !isMobile ? { transform: `translateY(${scrollY * 0.4}px)`, opacity: 1 - scrollY / 800 } : {};
@@ -39,7 +46,7 @@ function HeroSection() {
             <p data-aos="fade-right" className="text-[10px] tracking-[0.6em] text-[#b4647d] uppercase font-semibold">
               Developer
             </p>
-            <h1 data-aos="fade-right" className="font-['Playfair_Display'] text-5xl md:text-6xl lg:text-7xl font-medium text-[#334155] leading-[0.85] tracking-tight">
+            <h1 data-aos="fade-right" className="font-['Playfair_Display'] text-5xl md:text-6xl lg:text-7xl font-normal text-[#334155] leading-[0.85] tracking-tight">
               Aayusha<br />
               <span className="text-[#b4647d]" style={softShadow}>Ghimire</span>
             </h1>
@@ -60,16 +67,18 @@ function HeroSection() {
         {/* Description Section */}
         <div style={rightMove} className="order-3 text-center md:text-right w-full flex flex-col items-center md:items-end transition-transform duration-75 ease-out">
           <div className="max-w-[340px]">
-            <h2 data-aos="fade-left" className="font-['Playfair_Display'] text-4xl font-medium text-[#334155] leading-tight mb-4">
+            <h2 data-aos="fade-left" className="font-['Playfair_Display'] text-4xl font-normal text-[#334155] leading-tight mb-4">
               Frontend<br />
               <span className="font-['Poppins'] not-italic text-[10px] font-semibold text-[#b4647d] tracking-[0.4em] uppercase">Developer</span>
             </h2>
-            {/* Added 'hidden md:block' to hide paragraph on mobile */}
             <p data-aos="fade-left" className="hidden md:block text-sm text-slate-500 font-light leading-relaxed mb-6">
               Building desktop-first digital systems with a focus on clean architecture and premium aesthetics.
             </p>
             <div data-aos="fade-left">
-              <button className="bg-[#334155] text-white px-8 py-2.5 rounded-full text-[10px] font-semibold tracking-[0.2em] uppercase">
+              <button 
+                onClick={handleScrollToContact}
+                className="bg-[#334155] text-white px-8 py-2.5 rounded-full text-[10px] font-semibold tracking-[0.2em] uppercase cursor-pointer hover:bg-[#b4647d] transition-colors"
+              >
                 Work →
               </button>
             </div>
