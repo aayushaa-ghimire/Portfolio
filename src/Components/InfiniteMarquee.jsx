@@ -12,37 +12,37 @@ const projects = [
   { 
     id: "1", 
     title: "Age Calculator", 
-    image: "/thumbnails/age-calculator.png",
+    image: "/age-calculator.png",
     link: "https://age-calculator-gamma-orcin.vercel.app/" 
   },
   { 
     id: "2", 
     title: "Number Guessing Game", 
-    image: "/thumbnails/guessing-game.png",
+    image: "/guessing-game.png",
     link: "https://number-guessing-game-zeta-amber.vercel.app/" 
   },
   { 
     id: "3", 
     title: "Rock Paper Scissor", 
-    image: "/thumbnails/rock-paper-scissors.png",
+    image: "/rock-paper-scissors.png",
     link: "https://rock-paper-scissor-beta-five-26.vercel.app/" 
   },
   { 
     id: "4", 
     title: "To Do List", 
-    image: "/thumbnails/to-do-list.png",
+    image: "/to-do-list.png",
     link: "https://to-do-list-ipba.vercel.app/" 
   },
   { 
     id: "5", 
     title: "Vividify IT Solutions", 
-    image: "/thumbnails/vividify.png",
+    image: "/vividify.png",
     link: "https://vividify.vercel.app/" 
   },
   { 
     id: "6", 
     title: "Minimalist Calculator", 
-    image: "/thumbnails/calculator.png",
+    image: "/calculator.png",
     link: "https://calculator-ten-umber-83.vercel.app/" 
   },
 ];
